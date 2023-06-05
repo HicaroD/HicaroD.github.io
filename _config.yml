@@ -1,0 +1,12 @@
+title: Hícaro Dânrlley
+email: hdanrlley1@gmail.com
+description: >-
+  I'm a back-end developer who likes to write to spit out some of my opinions about the world
+  of Computer Science and software development in general in this blog.
+baseurl: ""
+url: ""
+github_username:  HicaroD
+
+theme: minima
+plugins:
+  - jekyll-feed
