@@ -6,6 +6,7 @@ description: >-
 baseurl: ""
 url: ""
 github_username:  HicaroD
+linkedin_username: hicaromiguel
 
 theme: minima
 plugins:
