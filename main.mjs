@@ -1,3 +1,5 @@
+#!/bin/node
+
 import fs from "fs";
 import ejs from "ejs";
 
@@ -13,6 +15,7 @@ function main() {
   }
 
   fs.writeFileSync("./public/index.html", renderedHTML);
+  console.log("Files generated successfuly");
 }
 
 main();
