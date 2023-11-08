@@ -3,9 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/css/sidebar.css" type="text/css" media="all">
     <title><%= site.title %></title>
   </head>
   <body>
-    <h1>Welcome to Hícaro's website</h1>
+    <nav class="sidebar">
+      <div class="profile">
+        <img src="https://via.placeholder.com/50" alt=""/>
+        <div class="description">
+          <p class="name"><%= profile.name %></p>
+          <p class="role"><%= profile.role %></p>
+        </div>
+      </div>
+
+      <ul class="items">
+        <!-- TODO: this could be a loop that reads data from the template stuff -->
+        <li class="item"><a href="#">About</a></li>
+        <li class="item"><a href="#">Resume</a></li>
+        <li class="item"><a href="#">Projects</a></li>
+        <li class="item"><a href="#">Blog</a></li>
+        <li class="item"><a href="#">CV</a></li>
+      </ul>
+    </nav>
+    <main>
+      <h1>Welcome to Hícaro's website</h1>
+    </main>
   </body>
 </html>
