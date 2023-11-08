@@ -3,12 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- TODO: get list of CSS and JS file path and insert here automatically with a loop -->
+    <link rel="stylesheet" href="../assets/css/globals.css" type="text/css" media="all">
     <link rel="stylesheet" href="../assets/css/sidebar.css" type="text/css" media="all">
     <title><%= site.title %></title>
   </head>
   <body>
     <nav class="sidebar">
       <div class="profile">
+        <!-- TODO: get profile picture path / link to insert here -->
         <img src="https://via.placeholder.com/50" alt=""/>
         <div class="description">
           <p class="name"><%= profile.name %></p>
@@ -17,7 +20,7 @@
       </div>
 
       <ul class="items">
-        <!-- TODO: this could be a loop that reads data from the template stuff -->
+        <!-- TODO: this could be a loop that reads data from the template stuff and then links to the proper sections -->
         <li class="item"><a href="#">About</a></li>
         <li class="item"><a href="#">Resume</a></li>
         <li class="item"><a href="#">Projects</a></li>
