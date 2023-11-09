@@ -16,7 +16,7 @@ function main() {
   const layout = fs.readFileSync("./layouts/default.ejs").toString();
   const cwd = process.cwd();
 
-  // TODO: read from file
+  // TODO: read from file created by the user
   const config = {
     site: { title: "Hicaro's website" },
     profile: {
@@ -25,7 +25,7 @@ function main() {
     },
     // NOTE: user won't need to change it
     path: {
-      topbar: `${cwd}/layouts/topbar`
+      topbar: `${cwd}/partials/topbar`
     },
   };
   const renderedHTML = ejs.render(layout, config);
