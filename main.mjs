@@ -12,24 +12,27 @@ function generateHTMLFiles(renderedHTML) {
   console.log("Files generated successfuly");
 }
 
-function main() {
-  const layout = fs.readFileSync("./layouts/default.ejs").toString();
+function getConfig() {
   const cwd = process.cwd();
 
   // TODO: read from file created by the user
-  const config = {
-    site: { title: "Hicaro's website" },
+  return {
+    site: { title: "Hícaro" },
     profile: {
       name: "Hícaro Dânrlley",
       role: "Software engineer",
     },
-    // NOTE: user won't need to change it
+    // NOTE: user will not be able to change it
     path: {
-      topbar: `${cwd}/partials/topbar`
+      topbar: `${cwd}/partials/topbar`,
     },
   };
-  const renderedHTML = ejs.render(layout, config);
+}
 
+function main() {
+  const layout = fs.readFileSync("./layouts/default.ejs").toString();
+  const config = getConfig();
+  const renderedHTML = ejs.render(layout, config);
   generateHTMLFiles(renderedHTML);
 }
 
