@@ -14,6 +14,7 @@ function generateHTMLFiles(renderedHTML) {
 
 function main() {
   const layout = fs.readFileSync("./layouts/default.ejs").toString();
+  const cwd = process.cwd();
 
   // TODO: read from file
   const config = {
@@ -21,6 +22,10 @@ function main() {
     profile: {
       name: "Hícaro Dânrlley",
       role: "Software engineer",
+    },
+    // NOTE: user won't need to change it
+    path: {
+      topbar: `${cwd}/layouts/topbar`
     },
   };
   const renderedHTML = ejs.render(layout, config);
