@@ -1,14 +1,22 @@
 #!/bin/node
 
 import fs from "fs";
+import path from "path";
 import ejs from "ejs";
 
-function generateHTMLFiles(renderedHTML) {
-  if (!fs.existsSync("public/")) {
-    fs.mkdirSync("./public/" /*, { recursive: true } */);
+const PUBLIC_DIR = "./public";
+const PARTIALS_DIR = "./partials";
+
+function generateHTMLFiles(renderedHTMLFiles) {
+  if (fs.existsSync(PUBLIC_DIR)) {
+    fs.rmSync(PUBLIC_DIR, { recursive: true });
+  }
+  fs.mkdirSync(PUBLIC_DIR /*, { recursive: true } */);
+
+  for (const [filename, renderedHTML] of Object.entries(renderedHTMLFiles)) {
+    fs.writeFileSync(`${PUBLIC_DIR}/${filename}`, renderedHTML);
   }
 
-  fs.writeFileSync("./public/index.html", renderedHTML);
   console.log("Files generated successfuly");
 }
 
@@ -28,14 +36,24 @@ function getConfig() {
     // Static website config (USER CAN'T CHANGE IT)
     metaconfig: {
       topbar: [
-        { item: "Resume", path: "#" },
-        { item: "Projects", path: "#" },
-        { item: "Blog", path: "#" },
-        { item: "CV", path: "#" },
+        {
+          item: "Resume",
+          path: "resume.html",
+        },
+        {
+          item: "Projects",
+          path: "projects.html",
+        },
+        { item: "Blog", path: "blog.html" },
+        { item: "CV", path: "cv.html" },
       ],
       paths: {
+        layouts: {
+          topbar: `${cwd}/layouts/topbar`,
+          start: `${cwd}/layouts/start`,
+          end: `${cwd}/layouts/end`,
+        },
         partials: {
-          topbar: `${cwd}/partials/topbar`,
           home: `${cwd}/partials/home`,
         },
         css: [
@@ -48,11 +66,37 @@ function getConfig() {
   };
 }
 
+function renderHTMLFiles(config) {
+  const renderedHTMLs = {};
+
+  const partialPaths = fs.readdirSync(PARTIALS_DIR);
+
+  for (const partialPath of partialPaths) {
+    if (path.extname(partialPath) !== ".ejs") {
+      throw Error(
+        `Invalid file in partials folder: ${partialPath}. Only '.ejs' file are allowed`
+      );
+    }
+  }
+
+  for (const partialFilename of partialPaths) {
+    const fileBasename = path.basename(partialFilename, ".ejs");
+    const htmlFileVersion = fileBasename + ".html";
+
+    const partialFilepath = `${PARTIALS_DIR}/${partialFilename}`;
+    const partialFile = fs.readFileSync(partialFilepath).toString();
+
+    const renderedHTML = ejs.render(partialFile, config);
+    renderedHTMLs[htmlFileVersion] = renderedHTML;
+  }
+
+  return renderedHTMLs;
+}
+
 function main() {
-  const layout = fs.readFileSync("./layouts/default.ejs").toString();
   const config = getConfig();
-  const renderedHTML = ejs.render(layout, config);
-  generateHTMLFiles(renderedHTML);
+  const renderedHTMLFiles = renderHTMLFiles(config);
+  generateHTMLFiles(renderedHTMLFiles);
 }
 
 main();
