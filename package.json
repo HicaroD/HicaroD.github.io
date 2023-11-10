@@ -4,7 +4,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "build": "node main.mjs"
+    "build": "node main.js"
   },
   "dependencies": {
     "ejs": "^3.1.9"
