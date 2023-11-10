@@ -1,6 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800;900&display=swap");
+
+/* blue - #157fd7 */
+/* grey - #d9d9d9 */
+
 /* Navigation bar layout */
 #topbar {
+  font-family: "Poppins";
   justify-content: space-between;
+}
+
+#topbar a {
+  color: #157fd7;
+  text-decoration: none;
+}
+
+#topbar a:hover {
+  text-decoration: underline;
+  text-decoration-style: #157fd7;
 }
 
 #topbar,
@@ -11,6 +27,20 @@
 
 #topbar > * {
   width: 50%;
+}
+
+/* Me */
+#topbar .me {
+  column-gap: 1rem;
+}
+
+#topbar .me .name {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+#topbar .me img {
+  border-radius: 50%;
 }
 
 /* List of items */
@@ -28,5 +58,5 @@
   height: 1px;
   border-width: 0;
   color: gray;
-  background-color: #D9D9D9;
+  background-color: #d9d9d9;
 }
