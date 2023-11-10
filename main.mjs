@@ -30,8 +30,13 @@ function getConfig() {
       paths: {
         partials: {
           topbar: `${cwd}/partials/topbar`,
+          home: `${cwd}/partials/home`,
         },
-        css: ["../assets/css/globals.css", "../assets/css/topbar.css"],
+        css: [
+          "../assets/css/globals.css",
+          "../assets/css/topbar.css",
+          "../assets/css/home.css",
+        ],
       },
     },
   };
