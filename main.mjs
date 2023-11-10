@@ -29,7 +29,7 @@ function getConfig() {
     site: { title: "Hícaro" },
     profile: {
       name: "Hícaro Dânrlley",
-      picture: `../assets/images/me.png`,
+      picture: `assets/images/me.png`,
       role: "Software engineer",
     },
 
@@ -57,9 +57,9 @@ function getConfig() {
           home: `${cwd}/partials/home`,
         },
         css: [
-          "../assets/css/globals.css",
-          "../assets/css/topbar.css",
-          "../assets/css/home.css",
+          "assets/css/globals.css",
+          "assets/css/topbar.css",
+          "assets/css/home.css",
         ],
       },
     },
