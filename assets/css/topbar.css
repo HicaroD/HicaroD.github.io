@@ -1,11 +1,11 @@
-.topbar, .topbar > * {
-  display: flex;
-}
-
 .topbar {
   justify-content: space-between;
 }
 
-.topbar .me, .topbar .items {
+.topbar, .topbar > * {
+  display: flex;
+}
+
+.topbar > * {
   width: 50%;
 }
