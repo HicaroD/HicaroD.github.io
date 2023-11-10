@@ -23,8 +23,14 @@ function getConfig() {
       role: "Software engineer",
     },
     // NOTE: user will not be able to change it
-    path: {
-      topbar: `${cwd}/partials/topbar`,
+    metaconfig: {
+      partials: {
+        topbar: `${cwd}/partials/topbar`,
+      },
+      css: [
+        "../assets/css/globals.css",
+        "../assets/css/topbar.css",
+      ],
     },
   };
 }
