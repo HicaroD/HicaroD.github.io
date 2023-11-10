@@ -1,23 +1,32 @@
 /* Navigation bar layout */
-.topbar {
+#topbar {
   justify-content: space-between;
 }
 
-.topbar, .topbar > * {
+#topbar,
+#topbar > * {
   display: flex;
   align-items: center;
 }
 
-.topbar > * {
+#topbar > * {
   width: 50%;
 }
 
 /* List of items */
-.topbar .items {
+#topbar .items {
   justify-content: end;
   column-gap: 2rem;
 }
 
-.topbar .items li {
+#topbar .items li {
   list-style: none;
+}
+
+/* Divider line */
+#navbar-line {
+  height: 1px;
+  border-width: 0;
+  color: gray;
+  background-color: #D9D9D9;
 }
