@@ -9,6 +9,11 @@
   justify-content: space-between;
 }
 
+#topbar .me img {
+  width: 55px;
+  height: 55px;
+}
+
 #topbar a {
   color: #157fd7;
   text-decoration: none;

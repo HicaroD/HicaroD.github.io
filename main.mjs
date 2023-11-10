@@ -21,6 +21,7 @@ function getConfig() {
     site: { title: "Hícaro" },
     profile: {
       name: "Hícaro Dânrlley",
+      picture: `${cwd}/assets/images/me.png`,
       role: "Software engineer",
     },
 
