@@ -1,0 +1,11 @@
+.topbar, .topbar .me, .topbar .items {
+  display: flex;
+}
+
+.topbar {
+  justify-content: space-between;
+}
+
+.topbar .me, .topbar .items {
+  width: 50%;
+}

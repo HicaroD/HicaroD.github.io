@@ -17,20 +17,21 @@ function getConfig() {
 
   // TODO: read from file created by the user
   return {
+    // User defined config
     site: { title: "Hícaro" },
     profile: {
       name: "Hícaro Dânrlley",
       role: "Software engineer",
     },
-    // NOTE: user will not be able to change it
+
+    // Static website config (USER CAN'T CHANGE IT)
     metaconfig: {
-      partials: {
-        topbar: `${cwd}/partials/topbar`,
+      paths: {
+        partials: {
+          topbar: `${cwd}/partials/topbar`,
+        },
+        css: ["../assets/css/globals.css", "../assets/css/topbar.css"],
       },
-      css: [
-        "../assets/css/globals.css",
-        "../assets/css/topbar.css",
-      ],
     },
   };
 }

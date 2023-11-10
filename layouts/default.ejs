@@ -4,14 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <% metaconfig.css.forEach(function(path){ -%>
+    <% metaconfig.paths.css.forEach(function(path){ -%>
       <link rel="stylesheet" href=<%= path %> type="text/css" media="all">
     <% }); -%>
 
     <title><%= site.title %></title>
   </head>
   <body>
-    <%- include(metaconfig.partials.topbar); %>
+    <%- include(metaconfig.paths.partials.topbar); %>
     <!-- TODO: add proper content here -->
     <main>
       <h1>Welcome to Hícaro's website</h1>
