@@ -8,10 +8,9 @@ const DOCS_DIR = "./docs";
 const PARTIALS_DIR = "./partials";
 
 function generateHTMLFiles(renderedHTMLFiles) {
-  if (fs.existsSync(DOCS_DIR)) {
-    fs.rmSync(DOCS_DIR, { recursive: true });
+  if (!fs.existsSync(DOCS_DIR)) {
+    throw new Error("'docs' directory does not exists");
   }
-  fs.mkdirSync(DOCS_DIR /*, { recursive: true } */);
 
   for (const [filename, renderedHTML] of Object.entries(renderedHTMLFiles)) {
     fs.writeFileSync(`${DOCS_DIR}/${filename}`, renderedHTML);
@@ -72,7 +71,10 @@ function renderHTMLFiles(config) {
   const partialPaths = fs.readdirSync(PARTIALS_DIR);
 
   for (const partialPath of partialPaths) {
-    if (path.extname(partialPath) !== ".ejs") {
+    if (
+      path.extname(partialPath) !== ".ejs" &&
+      !fs.lstatSync(partialPath).isDirectory()
+    ) {
       throw Error(
         `Invalid file in partials folder: ${partialPath}. Only '.ejs' file are allowed`
       );
