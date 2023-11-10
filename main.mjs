@@ -49,7 +49,7 @@ function getConfig() {
       ],
       paths: {
         layouts: {
-          topbar: `${cwd}/layouts/topbar`,
+          topbar: `../layouts/topbar`,
           start: `${cwd}/layouts/start`,
           end: `${cwd}/layouts/end`,
         },

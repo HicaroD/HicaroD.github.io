@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <% metaconfig.paths.css.forEach(function(path){ -%>
+      <link rel="stylesheet" href="<%= path %>" type="text/css" media="all" />
+    <% }); -%>
+
+    <title><%= site.title %></title>
+  </head>
+  <body>
+    <%- include(metaconfig.paths.layouts.topbar); %>
