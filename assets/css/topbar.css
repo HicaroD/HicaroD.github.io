@@ -1,11 +1,23 @@
+/* Navigation bar layout */
 .topbar {
   justify-content: space-between;
 }
 
 .topbar, .topbar > * {
   display: flex;
+  align-items: center;
 }
 
 .topbar > * {
   width: 50%;
+}
+
+/* List of items */
+.topbar .items {
+  justify-content: end;
+  column-gap: 2rem;
+}
+
+.topbar .items li {
+  list-style: none;
 }
