@@ -1,4 +1,4 @@
-.topbar, .topbar .me, .topbar .items {
+.topbar, .topbar > * {
   display: flex;
 }
 
