@@ -4,17 +4,17 @@ import fs from "fs";
 import path from "path";
 import ejs from "ejs";
 
-const PUBLIC_DIR = "./public";
+const DOCS_DIR = "./docs";
 const PARTIALS_DIR = "./partials";
 
 function generateHTMLFiles(renderedHTMLFiles) {
-  if (fs.existsSync(PUBLIC_DIR)) {
-    fs.rmSync(PUBLIC_DIR, { recursive: true });
+  if (fs.existsSync(DOCS_DIR)) {
+    fs.rmSync(DOCS_DIR, { recursive: true });
   }
-  fs.mkdirSync(PUBLIC_DIR /*, { recursive: true } */);
+  fs.mkdirSync(DOCS_DIR /*, { recursive: true } */);
 
   for (const [filename, renderedHTML] of Object.entries(renderedHTMLFiles)) {
-    fs.writeFileSync(`${PUBLIC_DIR}/${filename}`, renderedHTML);
+    fs.writeFileSync(`${DOCS_DIR}/${filename}`, renderedHTML);
   }
 
   console.log("Files generated successfuly");
