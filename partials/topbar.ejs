@@ -1,16 +1,16 @@
 <nav id="topbar">
   <div class="me">
-    <img src="<%= profile.picture %>" alt="profile-pic"/>
+    <img src="<%= profile.picture %>" alt="profile-pic" />
     <p class="name"><a href="#"><%= profile.name %></a></p>
   </div>
 
-  <!-- TODO: this could be a loop that reads data from the template stuff and then links to the proper sections -->
   <ul class="items">
-    <li class="item"><a href="#">Resume</a></li>
-    <li class="item"><a href="#">Projects</a></li>
-    <li class="item"><a href="#">Blog</a></li>
-    <li class="item"><a href="#">CV</a></li>
+  <% metaconfig.topbar.forEach(function(topbarItem){ -%>
+    <% var item = topbarItem.item %>
+    <% var path = topbarItem.path %>
+    <li class="item"><a href=<%= path %>><%= item %></a></li>
+  <% }); -%>
   </ul>
 </nav>
 
-<hr id="navbar-line">
+<hr id="navbar-line" />

@@ -27,6 +27,12 @@ function getConfig() {
 
     // Static website config (USER CAN'T CHANGE IT)
     metaconfig: {
+      topbar: [
+        { item: "Resume", path: "#" },
+        { item: "Projects", path: "#" },
+        { item: "Blog", path: "#" },
+        { item: "CV", path: "#" },
+      ],
       paths: {
         partials: {
           topbar: `${cwd}/partials/topbar`,
