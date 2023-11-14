@@ -6,6 +6,7 @@ const CONFIG_FILE = "./config.json";
 const DOCS_DIR = "./docs";
 const PARTIALS_DIR = "./partials";
 
+// NOTE!: this will be changed when I learn how to deploy the website statically using GitHub Actions
 function generateHTMLFiles(renderedHTMLFiles) {
   if (!fs.existsSync(DOCS_DIR)) {
     throw new Error("'docs' directory does not exists");
