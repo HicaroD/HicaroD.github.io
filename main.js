@@ -29,6 +29,7 @@ function getGeneratorConfig(environment) {
 
   return {
     metaconfig: {
+      home_path: environment === "prod" ? "/" : "index.html",
       topbar: [
         {
           item: "Resume",
