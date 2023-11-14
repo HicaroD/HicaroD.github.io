@@ -2,42 +2,9 @@ import fs from "fs";
 import path from "path";
 import ejs from "ejs";
 
-const cwd = process.cwd()
-
 const CONFIG_FILE = "./config.json";
 const DOCS_DIR = "./docs";
 const PARTIALS_DIR = "./partials";
-const GENERATOR_CONFIG = {
-  metaconfig: {
-    topbar: [
-      {
-        item: "Resume",
-        path: "resume.html",
-      },
-      {
-        item: "Projects",
-        path: "projects.html",
-      },
-      { item: "Blog", path: "blog.html" },
-      { item: "CV", path: "cv.html" },
-    ],
-    paths: {
-      layouts: {
-        topbar: `../layouts/topbar`,
-        start: `${cwd}/layouts/start`,
-        end: `${cwd}/layouts/end`,
-      },
-      partials: {
-        home: `${cwd}/partials/home`,
-      },
-      css: [
-        "assets/css/globals.css",
-        "assets/css/topbar.css",
-        "assets/css/home.css",
-      ],
-    },
-  },
-};
 
 function generateHTMLFiles(renderedHTMLFiles) {
   if (!fs.existsSync(DOCS_DIR)) {
@@ -51,52 +18,47 @@ function generateHTMLFiles(renderedHTMLFiles) {
   console.log("Files generated successfuly");
 }
 
+function getGeneratorConfig() {
+  const cwd = process.cwd();
+
+  return {
+    metaconfig: {
+      topbar: [
+        {
+          item: "Resume",
+          path: "resume.html",
+        },
+        {
+          item: "Projects",
+          path: "projects.html",
+        },
+        { item: "Blog", path: "blog.html" },
+        { item: "CV", path: "cv.html" },
+      ],
+      paths: {
+        layouts: {
+          topbar: `../layouts/topbar`,
+          start: `${cwd}/layouts/start`,
+          end: `${cwd}/layouts/end`,
+        },
+        partials: {
+          home: `${cwd}/partials/home`,
+        },
+        css: [
+          "assets/css/globals.css",
+          "assets/css/topbar.css",
+          "assets/css/home.css",
+        ],
+      },
+    },
+  };
+}
+
 function getConfig() {
   const userConfig = fs.readFileSync(CONFIG_FILE).toString();
-  const userConfigJson = JSON.parse(userConfig)
-
-  // TODO: read from file created by the user
-  return Object.assign(userConfigJson, GENERATOR_CONFIG)
-  // return {
-  //   // User defined config
-  //   site: { title: "Hícaro" },
-  //   profile: {
-  //     name: "Hícaro Dânrlley",
-  //     picture: `assets/images/me.png`,
-  //     role: "Software engineer",
-  //   },
-
-  //   // Static website config (USER CAN'T CHANGE IT)
-  //   metaconfig: {
-  //     topbar: [
-  //       {
-  //         item: "Resume",
-  //         path: "resume.html",
-  //       },
-  //       {
-  //         item: "Projects",
-  //         path: "projects.html",
-  //       },
-  //       { item: "Blog", path: "blog.html" },
-  //       { item: "CV", path: "cv.html" },
-  //     ],
-  //     paths: {
-  //       layouts: {
-  //         topbar: `../layouts/topbar`,
-  //         start: `${cwd}/layouts/start`,
-  //         end: `${cwd}/layouts/end`,
-  //       },
-  //       partials: {
-  //         home: `${cwd}/partials/home`,
-  //       },
-  //       css: [
-  //         "assets/css/globals.css",
-  //         "assets/css/topbar.css",
-  //         "assets/css/home.css",
-  //       ],
-  //     },
-  //   },
-  // };
+  const userConfigJson = JSON.parse(userConfig);
+  const generatorConfig = getGeneratorConfig()
+  return Object.assign(userConfigJson, generatorConfig);
 }
 
 function renderHTMLFiles(config) {
