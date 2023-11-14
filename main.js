@@ -32,14 +32,14 @@ function getGeneratorConfig() {
       topbar: [
         {
           item: "Resume",
-          path: "resume.html",
+          path: "resume",
         },
         {
           item: "Projects",
-          path: "projects.html",
+          path: "projects",
         },
-        { item: "Blog", path: "blog.html" },
-        { item: "CV", path: "cv.html" },
+        { item: "Blog", path: "blog" },
+        { item: "CV", path: "cv" },
       ],
       paths: {
         layouts: {
