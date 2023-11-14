@@ -3,7 +3,7 @@ name: Deploy static content to Pages
 on:
   push:
     branches: ["master"]
-    
+
   workflow_dispatch:
 
 permissions:
@@ -24,29 +24,40 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Listing all files and directories
-        run: | 
-          ls -la
       - name: Set Node.js 19.x
         uses: actions/setup-node@v3
         with:
           node-version: 19.x
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: "."
+
+      - name: Listing all files and directories for debugging purposes
+        run: |
+          ls -la
+
       - name: Run install
         uses: borales/actions-yarn@v4
         with:
           cmd: install
+
       - name: Build production bundle
         uses: borales/actions-yarn@v4
         with:
           cmd: build
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
-        with:
-          path: './public'
+
+      - name: Go to deploy directory
+        run: |
+          cd public
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
