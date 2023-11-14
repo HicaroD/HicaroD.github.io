@@ -4,7 +4,8 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "build": "node main.js"
+    "build": "ENVIRON=local node main.js",
+    "build:prod": "ENVIRON=prod node main.js"
   },
   "dependencies": {
     "ejs": "^3.1.9"
