@@ -14,7 +14,7 @@ function buildPublicDir() {
 
 function generateHTMLFiles(renderedHTMLFiles) {
   if (!fs.existsSync(PUBLIC_DIR)) {
-    buildPublicDir()
+    buildPublicDir();
   }
 
   for (const [filename, renderedHTML] of Object.entries(renderedHTMLFiles)) {
@@ -24,22 +24,23 @@ function generateHTMLFiles(renderedHTMLFiles) {
   console.log("Files generated successfuly");
 }
 
-function getGeneratorConfig() {
+function getGeneratorConfig(environment) {
   const cwd = process.cwd();
 
   return {
     metaconfig: {
+      home_path: environment === "prod" ? "/" : "index.html",
       topbar: [
         {
           item: "Resume",
-          path: "resume",
+          path: environment === "prod" ? "resume" : "resume.html",
         },
         {
           item: "Projects",
-          path: "projects",
+          path: environment === "prod" ? "projects" : "projects.html",
         },
-        { item: "Blog", path: "blog" },
-        { item: "CV", path: "cv" },
+        { item: "Blog", path: environment === "prod" ? "blog" : "blog.html" },
+        { item: "CV", path: environment === "prod" ? "cv" : "cv.html" },
       ],
       paths: {
         layouts: {
@@ -60,10 +61,10 @@ function getGeneratorConfig() {
   };
 }
 
-function getConfig() {
+function getConfig(environment) {
   const userConfig = fs.readFileSync(CONFIG_FILE).toString();
   const userConfigJson = JSON.parse(userConfig);
-  const generatorConfig = getGeneratorConfig();
+  const generatorConfig = getGeneratorConfig(environment);
   return Object.assign(userConfigJson, generatorConfig);
 }
 
@@ -98,7 +99,17 @@ function renderHTMLFiles(config) {
 }
 
 function main() {
-  const config = getConfig();
+  const environment = process.env.ENVIRON;
+  if (environment === undefined) {
+    throw new Error(
+      "Consider setting an environment variable, such as 'ENVIRON=prod' or 'ENVIRON=local'",
+    );
+  }
+  if (environment !== "prod" && environment !== "local") {
+    throw new Error(`Invalid value for ENVIRON variable: '${environment}'`);
+  }
+
+  const config = getConfig(environment);
   const renderedHTMLFiles = renderHTMLFiles(config);
   generateHTMLFiles(renderedHTMLFiles);
 }
