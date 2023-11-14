@@ -7,10 +7,14 @@ const PUBLIC_DIR = "./public";
 const PARTIALS_DIR = "./partials";
 const ASSETS_DIR = "./assets";
 
+function buildPublicDir() {
+  fs.mkdirSync(PUBLIC_DIR);
+  fs.cpSync(ASSETS_DIR, `${PUBLIC_DIR}/${ASSETS_DIR}`, { recursive: true });
+}
+
 function generateHTMLFiles(renderedHTMLFiles) {
   if (!fs.existsSync(PUBLIC_DIR)) {
-    fs.mkdirSync(PUBLIC_DIR);
-    fs.cpSync(ASSETS_DIR, `${PUBLIC_DIR}/${ASSETS_DIR}`, { recursive: true });
+    buildPublicDir()
   }
 
   for (const [filename, renderedHTML] of Object.entries(renderedHTMLFiles)) {
