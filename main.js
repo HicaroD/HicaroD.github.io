@@ -3,17 +3,18 @@ import path from "path";
 import ejs from "ejs";
 
 const CONFIG_FILE = "./config.json";
-const DOCS_DIR = "./docs";
+const PUBLIC_DIR = "./public";
 const PARTIALS_DIR = "./partials";
+const ASSETS_DIR = "./assets";
 
-// NOTE!: this will be changed when I learn how to deploy the website statically using GitHub Actions
 function generateHTMLFiles(renderedHTMLFiles) {
-  if (!fs.existsSync(DOCS_DIR)) {
-    throw new Error("'docs' directory does not exists");
+  if (!fs.existsSync(PUBLIC_DIR)) {
+    fs.mkdirSync(PUBLIC_DIR);
+    fs.cpSync(ASSETS_DIR, `${PUBLIC_DIR}/${ASSETS_DIR}`, { recursive: true });
   }
 
   for (const [filename, renderedHTML] of Object.entries(renderedHTMLFiles)) {
-    fs.writeFileSync(`${DOCS_DIR}/${filename}`, renderedHTML);
+    fs.writeFileSync(`${PUBLIC_DIR}/${filename}`, renderedHTML);
   }
 
   console.log("Files generated successfuly");
@@ -58,7 +59,7 @@ function getGeneratorConfig() {
 function getConfig() {
   const userConfig = fs.readFileSync(CONFIG_FILE).toString();
   const userConfigJson = JSON.parse(userConfig);
-  const generatorConfig = getGeneratorConfig()
+  const generatorConfig = getGeneratorConfig();
   return Object.assign(userConfigJson, generatorConfig);
 }
 
