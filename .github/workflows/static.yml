@@ -40,10 +40,6 @@ jobs:
         with:
           path: "."
 
-      - name: Listing all files and directories for debugging purposes
-        run: |
-          ls -la
-
       - name: Run install
         uses: borales/actions-yarn@v4
         with:
@@ -54,14 +50,7 @@ jobs:
         with:
           cmd: build
 
-      - name: Go to deploy directory
-        run: |
-          cd public
-
-      - name: Listing all files and directories after running build command for debugging purposes
-        run: |
-          ls -la
-
       - name: Deploy to GitHub Pages
         id: deployment
+        working-directory: ./public
         uses: actions/deploy-pages@v2
