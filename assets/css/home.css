@@ -1,12 +1,11 @@
-#home .intro {
-  p {
-    font-size: 20px;
-    margin: 5px auto;
-    color: #343434;
-  }
+/* Intro */
+#home .intro p {
+  font-size: 20px;
+  margin: 5px auto;
+  color: #343434;
+}
 
-  #name {
-    font-size: 40px;
-    color: #157fd7;
-  }
+#home .intro #name {
+  font-size: 40px;
+  color: #157fd7;
 }
