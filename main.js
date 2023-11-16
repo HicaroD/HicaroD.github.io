@@ -3,22 +3,30 @@ import path from "path";
 import ejs from "ejs";
 
 const CONFIG_FILE = "./config.json";
-const PUBLIC_DIR = "./public";
+const PROD_PUBLIC_DIR = "./public";
+const LOCAL_PUBLIC_DIR = "./_public";
 const PARTIALS_DIR = "./partials";
 const ASSETS_DIR = "./assets";
 
-function buildPublicDir() {
-  fs.mkdirSync(PUBLIC_DIR);
-  fs.cpSync(ASSETS_DIR, `${PUBLIC_DIR}/${ASSETS_DIR}`, { recursive: true });
+function getPublicDirPath(environment) {
+  return environment === "prod" ? PROD_PUBLIC_DIR : LOCAL_PUBLIC_DIR;
 }
 
-function generateHTMLFiles(renderedHTMLFiles) {
-  if (!fs.existsSync(PUBLIC_DIR)) {
-    buildPublicDir();
+function buildPublicDir(environment) {
+  const publicDir = getPublicDirPath(environment);
+  fs.mkdirSync(publicDir);
+  fs.cpSync(ASSETS_DIR, `${publicDir}/${ASSETS_DIR}`, { recursive: true });
+}
+
+function generateHTMLFiles(renderedHTMLFiles, environment) {
+  const publicDir = getPublicDirPath(environment)
+
+  if (!fs.existsSync(publicDir)) {
+    buildPublicDir(environment);
   }
 
   for (const [filename, renderedHTML] of Object.entries(renderedHTMLFiles)) {
-    fs.writeFileSync(`${PUBLIC_DIR}/${filename}`, renderedHTML);
+    fs.writeFileSync(`${publicDir}/${filename}`, renderedHTML);
   }
 
   console.log("Files generated successfuly");
@@ -115,7 +123,7 @@ function main() {
   const environment = getEnvironmentSetup();
   const config = getConfig(environment);
   const renderedHTMLFiles = renderHTMLFiles(config);
-  generateHTMLFiles(renderedHTMLFiles);
+  generateHTMLFiles(renderedHTMLFiles, environment);
 }
 
 main();
