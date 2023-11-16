@@ -1,11 +1,18 @@
 /* Intro */
+#home .intro {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
 #home .intro p {
   font-size: 20px;
   margin: 5px auto;
   color: #343434;
 }
 
-#home .intro #name {
+#home #name {
   font-size: 40px;
   color: #157fd7;
 }
