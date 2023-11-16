@@ -3,6 +3,7 @@ import path from "path";
 import ejs from "ejs";
 
 import { getEnvironmentSetup, getConfig, getPublicDirPath } from "./config.js";
+import { isEJSFile } from "./utils.js";
 
 const PARTIALS_DIR = "./partials";
 
@@ -26,10 +27,7 @@ function renderHTMLFiles(config) {
   const partialPaths = fs.readdirSync(PARTIALS_DIR);
 
   for (const partialPath of partialPaths) {
-    if (
-      path.extname(partialPath) !== ".ejs" &&
-      !fs.lstatSync(partialPath).isDirectory()
-    ) {
+    if (!isEJSFile(partialPath)) {
       throw Error(
         `Invalid file in partials folder: ${partialPath}. Only '.ejs' file are allowed`,
       );
