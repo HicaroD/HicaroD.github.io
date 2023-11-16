@@ -18,20 +18,6 @@ function buildPublicDir(environment) {
   fs.cpSync(ASSETS_DIR, `${publicDir}/${ASSETS_DIR}`, { recursive: true });
 }
 
-function generateHTMLFiles(renderedHTMLFiles, environment) {
-  const publicDir = getPublicDirPath(environment)
-
-  if (!fs.existsSync(publicDir)) {
-    buildPublicDir(environment);
-  }
-
-  for (const [filename, renderedHTML] of Object.entries(renderedHTMLFiles)) {
-    fs.writeFileSync(`${publicDir}/${filename}`, renderedHTML);
-  }
-
-  console.log("Files generated successfuly");
-}
-
 function getGeneratorConfig(environment) {
   const cwd = process.cwd();
 
@@ -69,11 +55,18 @@ function getGeneratorConfig(environment) {
   };
 }
 
-function getConfig(environment) {
-  const userConfig = fs.readFileSync(CONFIG_FILE).toString();
-  const userConfigJson = JSON.parse(userConfig);
-  const generatorConfig = getGeneratorConfig(environment);
-  return Object.assign(userConfigJson, generatorConfig);
+function generateHTMLFiles(renderedHTMLFiles, environment) {
+  const publicDir = getPublicDirPath(environment);
+
+  if (!fs.existsSync(publicDir)) {
+    buildPublicDir(environment);
+  }
+
+  for (const [filename, renderedHTML] of Object.entries(renderedHTMLFiles)) {
+    fs.writeFileSync(`${publicDir}/${filename}`, renderedHTML);
+  }
+
+  console.log("Files generated successfuly");
 }
 
 function renderHTMLFiles(config) {
@@ -104,6 +97,13 @@ function renderHTMLFiles(config) {
   }
 
   return renderedHTMLs;
+}
+
+function getConfig(environment) {
+  const userConfig = fs.readFileSync(CONFIG_FILE).toString();
+  const userConfigJson = JSON.parse(userConfig);
+  const generatorConfig = getGeneratorConfig(environment);
+  return Object.assign(userConfigJson, generatorConfig);
 }
 
 function getEnvironmentSetup() {
