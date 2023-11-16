@@ -7,8 +7,19 @@ front-end frameworks, such as React, Angular or VueJS, for example.
 
 ## Build
 
+For a local testing build:
+
 ```
 yarn build
+```
+
+This command above will generate a `_public` directory containing all the statically generated files for testing purposes. This will not have
+cleaned URLs because it is only done for production builds.
+
+For a production build:
+
+```
+yarn build:prod
 ```
 
 This command above will generate a `public` directory containing all the statically generated files. After that, CI will do the rest of the work
