@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import ejs from "ejs";
 
-import { getEnvironmentSetup, getConfig, getPublicDirPath } from "./config.js";
+import { getEnvironmentSetup, getConfig, getPublicDirPath, buildPublicDir } from "./config.js";
 import { isEJSFile } from "./utils.js";
 
 const PARTIALS_DIR = "./partials";
@@ -10,9 +10,11 @@ const PARTIALS_DIR = "./partials";
 function generateHTMLFiles(renderedHTMLFiles, environment) {
   const publicDir = getPublicDirPath(environment);
 
-  if (!fs.existsSync(publicDir)) {
-    buildPublicDir(environment);
+  if (fs.existsSync(publicDir)) {
+    fs.rmSync(publicDir, { recursive: true });
   }
+
+  buildPublicDir(environment);
 
   for (const [filename, renderedHTML] of Object.entries(renderedHTMLFiles)) {
     fs.writeFileSync(`${publicDir}/${filename}`, renderedHTML);
