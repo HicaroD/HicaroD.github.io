@@ -16,7 +16,7 @@ yarn build
 For a production build:
 
 ```
-yarn build
+yarn build:prod
 ```
 
 This command above will generate a `public` directory containing all the statically generated files. After that, CI will do the rest of the work
