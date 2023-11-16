@@ -13,6 +13,9 @@ For a local testing build:
 yarn build
 ```
 
+This command above will generate a `_public` directory containing all the statically generated files for testing purposes. This will not have
+cleaned URLs because it is only done for production builds.
+
 For a production build:
 
 ```
