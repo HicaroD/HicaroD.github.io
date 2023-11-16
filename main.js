@@ -98,7 +98,7 @@ function renderHTMLFiles(config) {
   return renderedHTMLs;
 }
 
-function main() {
+function getEnvironmentSetup() {
   const environment = process.env.ENVIRON;
   if (environment === undefined) {
     throw new Error(
@@ -108,7 +108,11 @@ function main() {
   if (environment !== "prod" && environment !== "local") {
     throw new Error(`Invalid value for ENVIRON variable: '${environment}'`);
   }
+  return environment;
+}
 
+function main() {
+  const environment = getEnvironmentSetup();
   const config = getConfig(environment);
   const renderedHTMLFiles = renderHTMLFiles(config);
   generateHTMLFiles(renderedHTMLFiles);
