@@ -7,6 +7,14 @@ front-end frameworks, such as React, Angular or VueJS, for example.
 
 ## Build
 
+For a local testing build:
+
+```
+yarn build
+```
+
+For a production build:
+
 ```
 yarn build
 ```
