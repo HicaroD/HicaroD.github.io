@@ -5,7 +5,7 @@
   align-items: center;
 }
 
-#home .intro p {
+#home p {
   font-size: 20px;
   margin: 5px auto;
   color: #343434;
@@ -17,7 +17,6 @@
 }
 
 #home .intro .personal-pic {
-  margin-left: 20px;
   border-radius: 5px;
   width: 320px;
   height: 450px;
@@ -26,4 +25,9 @@
 #home #name {
   font-size: 40px;
   color: #157fd7;
+}
+
+/* Personal description */
+#home .description {
+  margin-top: 20px;
 }
