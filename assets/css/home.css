@@ -2,14 +2,24 @@
 #home .intro {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
   align-items: center;
 }
 
-#home .intro p {
+#home p {
   font-size: 20px;
   margin: 5px auto;
   color: #343434;
+}
+
+#home .intro .info {
+  display: inline-block;
+  margin: 0 auto;
+}
+
+#home .intro .personal-pic {
+  border-radius: 5px;
+  width: 320px;
+  height: 450px;
 }
 
 #home #name {

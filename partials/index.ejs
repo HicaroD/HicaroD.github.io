@@ -1,15 +1,13 @@
 <%- include(metaconfig.paths.layouts.start); %>
 <main id="home">
   <div class="intro">
-    <!-- TODO: from config --!>
-    <img src="https://placehold.in/350x500/dark" />
+    <img class="personal-pic" src="<%= home.photo %>" />
     <div class="info">
       <p>Hello, I'm</p>
-      <!-- TODO: from config --!>
-      <p id="name">Hícaro Dânrlley</h1>
-      <!-- TODO: from config --!>
-      <p>Software engineer</p>
+      <p id="name"><%= profile.name %></h1>
+      <p><%= profile.role %></p>
     </div>
+    <!-- TODO: maybe get a list of strings that represents my self description --!>
   </div>
 </main>
 <%- include(metaconfig.paths.layouts.end); %>
