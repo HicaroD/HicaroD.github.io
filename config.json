@@ -1,8 +1,11 @@
 {
-  "site": { "title": "Hícaro" },
+  "site": { "title": "Hícaro Dânrlley" },
   "profile": {
     "name": "Hícaro Dânrlley",
     "picture": "assets/images/me.png",
     "role": "Software engineer"
+  },
+  "home": {
+    "photo": "./assets/images/me_2.jpeg"
   }
 }
