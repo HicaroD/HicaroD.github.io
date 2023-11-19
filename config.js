@@ -27,6 +27,9 @@ export function getConfig(environment) {
 
 export function buildPublicDir(environment) {
   const publicDir = getPublicDirPath(environment);
+  if (fs.existsSync(publicDir)) {
+    fs.rmSync(publicDir, { recursive: true });
+  }
   fs.mkdirSync(publicDir);
   fs.cpSync(ASSETS_DIR, `${publicDir}/${ASSETS_DIR}`, { recursive: true });
 }
