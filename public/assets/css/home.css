@@ -3,17 +3,13 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-evenly;
 }
 
 #home p {
   font-size: 20px;
   margin: 5px auto;
   color: #343434;
-}
-
-#home .intro .info {
-  display: inline-block;
-  margin: 0 auto;
 }
 
 #home .intro .personal-pic {
@@ -25,4 +21,9 @@
 #home #name {
   font-size: 40px;
   color: #157fd7;
+}
+
+#home #description {
+  width: 300px;
+  text-align: center;
 }
