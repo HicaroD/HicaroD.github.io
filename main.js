@@ -8,7 +8,7 @@ import { isEJSFile } from "./utils.js";
 const PARTIALS_DIR = "./partials";
 
 function generateHTMLFiles(renderedHTMLFiles, environment) {
-  const publicDir = getPublicDirPath();
+  const publicDir = getPublicDirPath(environment);
   buildPublicDir(environment);
 
   for (const [filename, renderedHTML] of Object.entries(renderedHTMLFiles)) {
