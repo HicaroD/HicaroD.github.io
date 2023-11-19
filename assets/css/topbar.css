@@ -19,6 +19,10 @@
   text-decoration: none;
 }
 
+#topbar .items a {
+  font-weight: 500;
+}
+
 #topbar a:hover {
   text-decoration: underline;
 }
