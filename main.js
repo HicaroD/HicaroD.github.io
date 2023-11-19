@@ -21,7 +21,7 @@ function renderHTMLFiles(config) {
   const renderedHTMLs = {};
 
   if(!fs.existsSync(PARTIALS_DIR)) {
-    throw new Error("'partials/' folder does not exists.");
+    throw new Error("'partials/' directory does not exists.");
   }
   const partialPaths = fs.readdirSync(PARTIALS_DIR);
 
