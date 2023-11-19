@@ -20,6 +20,9 @@ function generateHTMLFiles(renderedHTMLFiles, environment) {
 function renderHTMLFiles(config) {
   const renderedHTMLs = {};
 
+  if(!fs.existsSync(PARTIALS_DIR)) {
+    throw new Error("'partials/' folder does not exists.");
+  }
   const partialPaths = fs.readdirSync(PARTIALS_DIR);
 
   for (const partialPath of partialPaths) {
