@@ -2,12 +2,13 @@ import fs from "fs";
 import path from "path";
 import ejs from "ejs";
 
-import { getEnvironmentSetup, getConfig, buildPublicDir } from "./config.js";
+import { getEnvironmentSetup, getConfig, buildPublicDir, getPublicDirPath } from "./config.js";
 import { isEJSFile } from "./utils.js";
 
 const PARTIALS_DIR = "./partials";
 
 function generateHTMLFiles(renderedHTMLFiles, environment) {
+  const publicDir = getPublicDirPath();
   buildPublicDir(environment);
 
   for (const [filename, renderedHTML] of Object.entries(renderedHTMLFiles)) {
