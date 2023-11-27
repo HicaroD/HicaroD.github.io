@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800;900&display=swap");
-
 /* blue - #157fd7 */
 /* grey - #d9d9d9 */
 
@@ -17,10 +15,6 @@
 #topbar a {
   color: #157fd7;
   text-decoration: none;
-}
-
-#topbar .items a {
-  font-weight: 500;
 }
 
 #topbar a:hover {
