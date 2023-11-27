@@ -69,6 +69,7 @@ function getGeneratorConfig(environment) {
           "assets/css/globals.css",
           "assets/css/topbar.css",
           "assets/css/home.css",
+          "assets/css/resume.css",
         ],
       },
     },
