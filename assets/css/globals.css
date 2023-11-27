@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800;900&display=swap");
 
+/* General website style */
 body {
   width: 65%;
   margin: 0 auto;
@@ -14,4 +15,14 @@ body {
 
 .link a:hover {
   text-decoration: underline;
+}
+
+/* Generic section style */
+.section {
+  font-size: 30px !important;
+  color: #157fd7;
+}
+
+.section a {
+  color: #157fd7;
 }
