@@ -14,19 +14,6 @@
   height: 55px;
 }
 
-#topbar a {
-  color: #157fd7;
-  text-decoration: none;
-}
-
-#topbar .items a {
-  font-weight: 500;
-}
-
-#topbar a:hover {
-  text-decoration: underline;
-}
-
 #topbar,
 #topbar > * {
   display: flex;

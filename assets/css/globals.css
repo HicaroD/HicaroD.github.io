@@ -5,3 +5,13 @@ body {
   margin: 0 auto;
   font-family: "IBM Plex Serif";
 }
+
+/* Generic link style */
+.link a {
+  color: #157fd7;
+  text-decoration: none;
+}
+
+.link a:hover {
+  text-decoration: underline;
+}
