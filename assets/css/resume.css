@@ -1,5 +1,4 @@
-#resume > p,
-#resume > li {
+#resume > p, #resume ul {
   font-size: 20px;
   text-align: justify;
 }
