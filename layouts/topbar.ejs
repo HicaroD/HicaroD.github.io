@@ -1,12 +1,12 @@
 <nav id="topbar">
   <div class="me">
     <img src="<%= profile.picture %>" alt="profile-pic" />
-    <p class="name link"><a href="<%= metaconfig.home_path %>"><%= profile.name %></a></p>
+    <p class="name"><a class="link" href="<%= metaconfig.home_path %>"><%= profile.name %></a></p>
   </div>
 
   <ul class="items">
   <% metaconfig.topbar.forEach(function(topbarItem){ -%>
-    <li class="item link"><a href="<%= topbarItem.path %>"><%= topbarItem.item %></a></li>
+    <li class="item"><a class="link" href="<%= topbarItem.path %>"><%= topbarItem.item %></a></li>
   <% }); -%>
   </ul>
 </nav>
