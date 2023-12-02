@@ -1,0 +1,12 @@
+#resume > p, #resume ul {
+  font-size: 20px;
+  text-align: justify;
+}
+
+#resume ul {
+  padding-left: 20px;
+}
+
+#resume ul li::marker {
+  color: #157fd7;
+}

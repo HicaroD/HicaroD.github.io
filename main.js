@@ -2,18 +2,13 @@ import fs from "fs";
 import path from "path";
 import ejs from "ejs";
 
-import { getEnvironmentSetup, getConfig, getPublicDirPath, buildPublicDir } from "./config.js";
+import { getEnvironmentSetup, getConfig, buildPublicDir, getPublicDirPath } from "./config.js";
 import { isEJSFile } from "./utils.js";
 
 const PARTIALS_DIR = "./partials";
 
 function generateHTMLFiles(renderedHTMLFiles, environment) {
   const publicDir = getPublicDirPath(environment);
-
-  if (fs.existsSync(publicDir)) {
-    fs.rmSync(publicDir, { recursive: true });
-  }
-
   buildPublicDir(environment);
 
   for (const [filename, renderedHTML] of Object.entries(renderedHTMLFiles)) {
@@ -26,6 +21,9 @@ function generateHTMLFiles(renderedHTMLFiles, environment) {
 function renderHTMLFiles(config) {
   const renderedHTMLs = {};
 
+  if(!fs.existsSync(PARTIALS_DIR)) {
+    throw new Error("'partials/' directory does not exists.");
+  }
   const partialPaths = fs.readdirSync(PARTIALS_DIR);
 
   for (const partialPath of partialPaths) {

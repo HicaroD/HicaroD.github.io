@@ -1,13 +1,11 @@
 <%- include(metaconfig.paths.layouts.start); %>
 <main id="home">
   <div class="intro">
-    <img class="personal-pic" src="<%= home.photo %>" />
     <div class="info">
-      <p>Hello, I'm</p>
       <p id="name"><%= profile.name %></h1>
-      <p><%= profile.role %></p>
+      <p id="description">Software engineer. Brazilian. Passionate by compilers and Counter-Strike.</p>
     </div>
-    <!-- TODO: maybe get a list of strings that represents my self description --!>
+    <img class="personal-pic" src="<%= home.photo %>" />
   </div>
 </main>
 <%- include(metaconfig.paths.layouts.end); %>
