@@ -8,12 +8,12 @@ body {
 }
 
 /* Generic link style */
-.link a {
+.link {
   color: #157fd7;
   text-decoration: none;
 }
 
-.link a:hover {
+.link:hover {
   text-decoration: underline;
 }
 
