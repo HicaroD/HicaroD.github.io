@@ -18,11 +18,11 @@ body {
 }
 
 /* Generic section style */
-.section {
+.section-title {
   font-size: 30px !important;
   color: #157fd7;
 }
 
-.section a {
+.section-title a {
   color: #157fd7;
 }

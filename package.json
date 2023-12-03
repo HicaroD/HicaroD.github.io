@@ -5,9 +5,13 @@
   "type": "module",
   "scripts": {
     "build": "ENVIRON=local node main.js",
-    "build:prod": "ENVIRON=prod node main.js"
+    "build:prod": "ENVIRON=prod node main.js",
+    "prepare": "husky install"
   },
   "dependencies": {
     "ejs": "^3.1.9"
+  },
+  "devDependencies": {
+    "husky": "^8.0.0"
   }
 }
