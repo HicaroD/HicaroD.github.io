@@ -1,5 +1,5 @@
 {
-  "site": { "title": "Hícaro Dânrlley" },
+  "site": { "favicon": "assets/images/me.png", "title": "Hícaro Dânrlley" },
   "profile": {
     "name": "Hícaro Dânrlley",
     "picture": "assets/images/me.png",
