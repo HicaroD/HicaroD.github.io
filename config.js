@@ -54,7 +54,7 @@ function getGeneratorConfig(environment) {
         {
           item: "Projects",
           path: environment === "prod" ? "projects" : "projects.html",
-          prod: false,
+          prod: true,
         },
         {
           item: "Blog",

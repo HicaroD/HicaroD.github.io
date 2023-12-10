@@ -14,6 +14,12 @@ body {
   margin: 0 auto;
   font-family: "IBM Plex Serif";
   color: #e8e6e3;
+  word-spacing: 0.1em;
+}
+
+/* Paragraphs */
+* > p {
+  font-size: 20px;
 }
 
 /* Generic link style */
@@ -39,10 +45,16 @@ body {
 /* Generic unordered list style */
 .list {
   font-size: 20px;
-  text-align: justify;
   padding-left: 20px;
 }
 
 .list li::marker {
   color: #4eaaee;
 }
+
+/* <br> */
+br {
+   display: block;
+   margin-top: 12px;
+}
+
