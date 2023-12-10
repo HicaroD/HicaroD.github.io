@@ -43,18 +43,29 @@ function getGeneratorConfig(environment) {
 
   return {
     metaconfig: {
+      prod: environment === "prod",
       home_path: environment === "prod" ? "/" : "index.html",
       topbar: [
         {
           item: "Resume",
           path: environment === "prod" ? "resume" : "resume.html",
+          enabled_in_prod: true,
         },
         {
           item: "Projects",
           path: environment === "prod" ? "projects" : "projects.html",
+          enabled_in_prod: false,
         },
-        { item: "Blog", path: environment === "prod" ? "blog" : "blog.html" },
-        { item: "CV", path: environment === "prod" ? "cv" : "cv.html" },
+        {
+          item: "Blog",
+          path: environment === "prod" ? "blog" : "blog.html",
+          enabled_in_prod: false,
+        },
+        {
+          item: "CV",
+          path: environment === "prod" ? "cv" : "cv.html",
+          enabled_in_prod: false,
+        },
       ],
       paths: {
         layouts: {

@@ -5,9 +5,20 @@
   </div>
 
   <ul class="items">
-  <% metaconfig.topbar.forEach(function(topbarItem){ -%>
-    <li class="item"><a class="link" href="<%= topbarItem.path %>"><%= topbarItem.item %></a></li>
-  <% }); -%>
+  <% if (metaconfig.prod) { %>
+    <% metaconfig.topbar.forEach(function(topbarItem){ -%>
+      <% if (topbarItem.enabled_in_prod) { %>
+        <li class="item"><a class="link" href="<%= topbarItem.path %>"><%= topbarItem.item %></a></li>
+      <% } %>
+    <% }); -%>
+  <% } %>
+
+  <% if (!metaconfig.prod) { %>
+    <% metaconfig.topbar.forEach(function(topbarItem){ -%>
+      <li class="item"><a class="link" href="<%= topbarItem.path %>"><%= topbarItem.item %></a></li>
+    <% }); -%>
+  <% } %>
+
   </ul>
 </nav>
 
