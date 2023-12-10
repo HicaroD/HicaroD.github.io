@@ -1,13 +1,4 @@
-#resume > * > p,
-#resume ul {
+#resume > * > p {
   font-size: 20px;
   text-align: justify;
-}
-
-#resume ul {
-  padding-left: 20px;
-}
-
-#resume ul li::marker {
-  color: #4eaaee;
 }

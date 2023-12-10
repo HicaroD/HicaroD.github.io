@@ -35,3 +35,14 @@ body {
 .section-title a {
   color: #4eaaee;
 }
+
+/* Generic unordered list style */
+.list {
+  font-size: 20px;
+  text-align: justify;
+  padding-left: 20px;
+}
+
+.list li::marker {
+  color: #4eaaee;
+}
