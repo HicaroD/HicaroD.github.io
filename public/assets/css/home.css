@@ -9,7 +9,6 @@
 #home p {
   font-size: 20px;
   margin: 5px auto;
-  color: #343434;
 }
 
 #home .intro .personal-pic {
@@ -20,7 +19,7 @@
 
 #home #name {
   font-size: 40px;
-  color: #157fd7;
+  color: #4eaaee;
 }
 
 #home #description {

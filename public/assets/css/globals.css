@@ -1,15 +1,24 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800;900&display=swap");
 
+/*
+ * dark background: #131516
+*/
+
 /* General website style */
+html {
+  background-color: #181a1b !important;
+}
+
 body {
   width: 65%;
   margin: 0 auto;
   font-family: "IBM Plex Serif";
+  color: #e8e6e3;
 }
 
 /* Generic link style */
 .link {
-  color: #157fd7;
+  color: #4eaaee;
   text-decoration: none;
 }
 
@@ -20,9 +29,9 @@ body {
 /* Generic section style */
 .section-title {
   font-size: 30px !important;
-  color: #157fd7;
+  color: #4eaaee;
 }
 
 .section-title a {
-  color: #157fd7;
+  color: #4eaaee;
 }
