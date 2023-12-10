@@ -7,7 +7,7 @@
   <ul class="items">
   <% if (metaconfig.prod) { %>
     <% metaconfig.topbar.forEach(function(topbarItem){ -%>
-      <% if (topbarItem.enabled_in_prod) { %>
+      <% if (topbarItem.prod) { %>
         <li class="item"><a class="link" href="<%= topbarItem.path %>"><%= topbarItem.item %></a></li>
       <% } %>
     <% }); -%>

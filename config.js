@@ -49,22 +49,22 @@ function getGeneratorConfig(environment) {
         {
           item: "Resume",
           path: environment === "prod" ? "resume" : "resume.html",
-          enabled_in_prod: true,
+          prod: true,
         },
         {
           item: "Projects",
           path: environment === "prod" ? "projects" : "projects.html",
-          enabled_in_prod: false,
+          prod: false,
         },
         {
           item: "Blog",
           path: environment === "prod" ? "blog" : "blog.html",
-          enabled_in_prod: false,
+          prod: false,
         },
         {
           item: "CV",
           path: environment === "prod" ? "cv" : "cv.html",
-          enabled_in_prod: false,
+          prod: false,
         },
       ],
       paths: {
