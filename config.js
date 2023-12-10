@@ -69,12 +69,9 @@ function getGeneratorConfig(environment) {
       ],
       paths: {
         layouts: {
-          topbar: `../layouts/topbar`,
+          topbar: `${cwd}/layouts/topbar`,
           start: `${cwd}/layouts/start`,
           end: `${cwd}/layouts/end`,
-        },
-        partials: {
-          home: `${cwd}/partials/home`,
         },
         css: [
           "assets/css/globals.css",
