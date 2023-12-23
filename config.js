@@ -1,4 +1,5 @@
 import fs from "fs";
+import path from "path";
 
 const CONFIG_FILE = "./config.json";
 const PROD_PUBLIC_DIR = "./public";
@@ -40,10 +41,22 @@ export function getPublicDirPath(environment) {
 
 function getGeneratorConfig(environment) {
   const cwd = process.cwd();
+
   const cssFiles = fs
     .readdirSync("assets/css/")
     .filter((path) => path.endsWith(".css"))
     .map((path) => "assets/css/" + path);
+
+  const layoutFiles = fs
+    .readdirSync("./layouts/")
+    .filter((path) => path.endsWith(".ejs"))
+    .map((path) => fs.realpathSync("layouts/" + path));
+
+  const layoutFilesObj = {};
+  for (const layoutFilePath of layoutFiles) {
+    const { name, dir } = path.parse(layoutFilePath);
+    layoutFilesObj[name] = path.join(dir, name);
+  }
 
   return {
     metaconfig: {
@@ -72,11 +85,7 @@ function getGeneratorConfig(environment) {
         },
       ],
       paths: {
-        layouts: {
-          topbar: `${cwd}/layouts/topbar`,
-          start: `${cwd}/layouts/start`,
-          end: `${cwd}/layouts/end`,
-        },
+        layouts: layoutFilesObj,
         css: cssFiles,
       },
     },
