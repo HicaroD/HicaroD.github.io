@@ -1,0 +1,17 @@
+#blog .post > * {
+  margin: 10px auto;
+}
+
+#blog .date {
+  color: grey;
+}
+
+#blog .tags {
+  margin-top: 0px;
+  display: flex;
+  gap: 10px;
+}
+
+#blog .tags > p {
+  margin-top: 0;
+}
