@@ -40,8 +40,6 @@ export function getPublicDirPath(environment) {
 }
 
 function getGeneratorConfig(environment) {
-  const cwd = process.cwd();
-
   const cssFiles = fs
     .readdirSync("assets/css/")
     .filter((path) => path.endsWith(".css"))
