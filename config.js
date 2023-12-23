@@ -40,6 +40,10 @@ export function getPublicDirPath(environment) {
 
 function getGeneratorConfig(environment) {
   const cwd = process.cwd();
+  const cssFiles = fs
+    .readdirSync("assets/css/")
+    .filter((path) => path.endsWith(".css"))
+    .map((path) => "assets/css/" + path);
 
   return {
     metaconfig: {
@@ -73,12 +77,7 @@ function getGeneratorConfig(environment) {
           start: `${cwd}/layouts/start`,
           end: `${cwd}/layouts/end`,
         },
-        css: [
-          "assets/css/globals.css",
-          "assets/css/topbar.css",
-          "assets/css/home.css",
-          "assets/css/resume.css",
-        ],
+        css: cssFiles,
       },
     },
   };
