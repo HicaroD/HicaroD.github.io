@@ -42,13 +42,13 @@ export function getPublicDirPath(environment) {
 function getGeneratorConfig(environment) {
   const cssFiles = fs
     .readdirSync("assets/css/")
-    .filter((path) => path.endsWith(".css"))
-    .map((path) => "assets/css/" + path);
+    .filter((filepath) => filepath.endsWith(".css"))
+    .map((filepath) => path.join("assets/css/", filepath));
 
   const layoutFiles = fs
     .readdirSync("./layouts/")
-    .filter((path) => path.endsWith(".ejs"))
-    .map((path) => fs.realpathSync("layouts/" + path));
+    .filter((filepath) => filepath.endsWith(".ejs"))
+    .map((filepath) => fs.realpathSync(path.join("layouts/", filepath)));
 
   const layoutFilesObj = {};
   for (const layoutFilePath of layoutFiles) {
