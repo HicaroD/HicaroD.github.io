@@ -1,20 +1,19 @@
 <%- include(metaconfig.paths.layouts.start); %>
 <main id="blog">
-  <div class="post">
-    <h1 class="title"><a class= "link" href="#">First blog post</a></h1>
-    <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus tempus
-    condimentum aliquet. Morbi lacus turpis, consectetur et gravida et, congue
-    sed quam. In et est massa. Nullam non tortor placerat, pellentesque enim
-    eu, cursus nisi. Vestibulum lacinia felis vitae finibus porta. Suspendisse
-    sit amet nulla vitae ipsum fermentum porta vel sed lorem.
-    </p>
-    <p class="date">23-12-2023</p>
-    <div class="tags">
-      <p><a class="link" href="#">#rust</a></p>
-      <p><a class="link" href="#">#web</a></p>
+  <!-- TODO: get list of posts and insert here in a loop --!>
+
+  <% posts.forEach(function(post){ -%>
+    <div class="post">
+      <h1 class="title"><a class= "link" href="#"><%= post.title %></a></h1>
+      <p><%= post.description %></p>
+      <p class="date"><%= post.date %></p>
+      <div class="tags">
+      <% post.tags.forEach(function(tag){ -%>
+        <p><a class="link" href="#">#<%= tag %></a></p>
+      <% }); -%>
+      </div>
     </div>
-  </div>
-  <hr class="line">
+    <hr class="line">
+  <% }); -%>
 </main>
 <%- include(metaconfig.paths.layouts.end); %>

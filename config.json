@@ -7,5 +7,19 @@
   },
   "home": {
     "photo": "./assets/images/me_2.jpeg"
-  }
+  },
+  "posts": [
+    {
+      "title": "My first post",
+      "description": "That's my first post description",
+      "date": "23-12-2023",
+      "tags": ["rust", "web"]
+    },
+    {
+      "title": "My second blog post",
+      "description": "That's my second post description",
+      "date": "24-12-2023",
+      "tags": ["cpp"]
+    }
+  ]
 }
