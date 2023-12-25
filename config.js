@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import { getDayMonthYear } from "./utils.js";
 
 const CONFIG_FILE = "./config.json";
 const PROD_PUBLIC_DIR = "./public";
@@ -20,10 +21,30 @@ export function getEnvironmentSetup() {
 }
 
 export function getConfig(environment) {
-  const userConfig = fs.readFileSync(CONFIG_FILE).toString();
-  const userConfigJson = JSON.parse(userConfig);
+  const userConfig = getUserConfig();
   const generatorConfig = getGeneratorConfig(environment);
-  return Object.assign(userConfigJson, generatorConfig);
+  return Object.assign(userConfig, generatorConfig);
+}
+
+function getUserConfig() {
+  const userConfig = fs.readFileSync(CONFIG_FILE).toString();
+
+  const userConfigJson = JSON.parse(userConfig);
+  userConfigJson.posts = userConfigJson.posts.map((post) => getPostInfo(post));
+
+  return userConfigJson;
+}
+
+function getPostInfo(post) {
+  const postContent = fs.readFileSync(post.file);
+  const { birthtime, mtime } = fs.lstatSync(post.file);
+
+  return {
+    ...post,
+    content: postContent,
+    createdAt: getDayMonthYear(birthtime),
+    updatedAt: getDayMonthYear(mtime),
+  };
 }
 
 export function buildPublicDir(environment) {

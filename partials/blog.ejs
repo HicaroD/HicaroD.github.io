@@ -4,7 +4,7 @@
 
   <% posts.forEach(function(post){ -%>
     <div class="post">
-      <h1 class="title"><a class= "link" href="#"><%= post.title %></a></h1>
+      <h1 class="title"><a class= "link" href="<%= post.title.link %>"><%= post.title.name %></a></h1>
       <p><%= post.description %></p>
       <p class="date"><%= post.date %></p>
       <div class="tags">

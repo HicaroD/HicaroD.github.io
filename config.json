@@ -10,14 +10,16 @@
   },
   "posts": [
     {
-      "title": "My first post",
+      "title": { "name": "My first post", "link": "#" },
       "description": "That's my first post description",
+      "file": "_posts/my-first-post.html",
       "date": "23-12-2023",
       "tags": ["rust", "web"]
     },
     {
-      "title": "My second blog post",
+      "title": { "name": "My second blog post", "link": "#" },
       "description": "That's my second post description",
+      "file": "_posts/my-second-post.html",
       "date": "24-12-2023",
       "tags": ["cpp"]
     }
