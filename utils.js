@@ -6,8 +6,8 @@ export function isEJSFile(filePath) {
 
 export function getDayMonthYear(date) {
   return {
-    day: date.getUTCDay(),
-    month: date.getUTCMonth(),
+    day: date.getUTCDate(),
+    month: date.getUTCMonth() + 1,
     year: date.getUTCFullYear(),
   };
 }
