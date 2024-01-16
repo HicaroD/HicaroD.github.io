@@ -1,5 +1,8 @@
 <%- include(metaconfig.paths.layouts.start); %>
 <main id="post">
-<%- posts[blogPostIndex].content %>
+    <h1 class="title"><%- posts[blogPostIndex].title.name %></h1>
+    <hr class="line">
+    <%- posts[blogPostIndex].content %>
+    <hr class="line">
 </main>
 <%- include(metaconfig.paths.layouts.end); %>
