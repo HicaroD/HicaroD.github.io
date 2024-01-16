@@ -36,8 +36,10 @@ function getUserConfig() {
 }
 
 function getPostInfo(post) {
-  const postContent = fs.readFileSync(post.file);
+  const postContent = fs.readFileSync(post.file).toString();
   const { birthtime, mtime } = fs.lstatSync(post.file);
+
+  post.title.link = path.basename(post.file)
 
   return {
     ...post,

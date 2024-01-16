@@ -40,6 +40,9 @@ function renderHTMLFiles(config) {
   }
 
   for (const partialFilename of partialPaths) {
+    if (partialFilename == "post.ejs") {
+      continue;
+    }
     const fileBasename = path.basename(partialFilename, ".ejs");
     const htmlFileVersion = fileBasename + ".html";
 
@@ -49,6 +52,18 @@ function renderHTMLFiles(config) {
     const renderedHTML = ejs.render(partialFile, config);
     renderedHTMLs[htmlFileVersion] = renderedHTML;
   }
+
+  const blogPostPartial = fs.readFileSync(`${PARTIALS_DIR}/post.ejs`).toString();
+  const blogPosts = fs.readdirSync("_posts");
+
+  blogPosts.forEach((blogPostFilename, blogPostIndex) => {
+    const configWithBlogPostIndex = {
+      blogPostIndex,
+      ...config,
+    };
+    const renderedHTML = ejs.render(blogPostPartial, configWithBlogPostIndex);
+    renderedHTMLs[blogPostFilename] = renderedHTML;
+  });
 
   return renderedHTMLs;
 }
