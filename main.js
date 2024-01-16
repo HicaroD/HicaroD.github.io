@@ -23,6 +23,7 @@ function generateHTMLFiles(renderedHTMLFiles, environment) {
   console.log("Files generated successfuly");
 }
 
+// TODO: this method is too big
 function renderHTMLFiles(config) {
   const renderedHTMLs = {};
 
