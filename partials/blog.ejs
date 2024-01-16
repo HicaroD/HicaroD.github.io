@@ -1,7 +1,5 @@
 <%- include(metaconfig.paths.layouts.start); %>
 <main id="blog">
-  <!-- TODO: get list of posts and insert here in a loop --!>
-
   <% posts.forEach(function(post){ -%>
     <div class="post">
       <h1 class="title"><a class= "link" href="<%= post.title.link %>"><%= post.title.name %></a></h1>
