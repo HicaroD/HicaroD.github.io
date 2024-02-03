@@ -11,7 +11,7 @@ export function getEnvironmentSetup() {
   const environment = process.env.ENVIRON;
   if (environment === undefined) {
     throw new Error(
-      "Consider setting an environment variable, such as 'ENVIRON=prod' or 'ENVIRON=local'",
+      "Consider setting an environment variable, such as 'ENVIRON=prod' or 'ENVIRON=local'"
     );
   }
   if (environment !== "prod" && environment !== "local") {
@@ -111,9 +111,9 @@ function getHomePath(environment) {
   const publicDirPath = getPublicDirPath(environment);
   let homePath = path.join(publicDirPath, "index.html");
 
-  const { dir, base, name } = path.parse(homePath);
+  const { dir, base } = path.parse(homePath);
   const isProd = environment === "prod";
-  const filename = isProd ? name : base;
+  const filename = isProd ? "/" : base;
 
   homePath = path.join(dir, filename);
   const homeAbsolutePath = path.resolve(homePath);
@@ -152,7 +152,7 @@ function getTopBarItems(environment) {
 
     item.path = path.join(dir, filename);
     const itemPathWithFolder = path.resolve(
-      path.join(publicDirPath, item.path),
+      path.join(publicDirPath, item.path)
     );
 
     return { ...item, path: itemPathWithFolder };
