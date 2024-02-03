@@ -37,7 +37,6 @@ function generateBlogPostFolder(renderedBlogPosts, publicDirPath) {
   }
 }
 
-// TODO: this method is too big
 function renderHTMLFiles(config) {
   const renderedHTMLs = {};
 
