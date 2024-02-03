@@ -11,7 +11,7 @@ export function getEnvironmentSetup() {
   const environment = process.env.ENVIRON;
   if (environment === undefined) {
     throw new Error(
-      "Consider setting an environment variable, such as 'ENVIRON=prod' or 'ENVIRON=local'"
+      "Consider setting an environment variable, such as 'ENVIRON=prod' or 'ENVIRON=local'",
     );
   }
   if (environment !== "prod" && environment !== "local") {
@@ -23,7 +23,21 @@ export function getEnvironmentSetup() {
 export function getConfig(environment) {
   const userConfig = getUserConfig();
   const generatorConfig = getGeneratorConfig(environment);
-  return Object.assign(userConfig, generatorConfig);
+  const wholeConfig = Object.assign(userConfig, generatorConfig);
+  const formattedConfig = getFormattedConfig(wholeConfig);
+  return formattedConfig;
+}
+
+function getFormattedConfig(config) {
+  for (const key in config) {
+    const value = config[key];
+    if (fs.existsSync(value)) {
+      config[key] = path.resolve(config[key]);
+    } else if (typeof value == "object") {
+      config[key] = getFormattedConfig(value);
+    }
+  }
+  return config;
 }
 
 function getUserConfig() {
@@ -39,7 +53,7 @@ function getPostInfo(post) {
   const postContent = fs.readFileSync(post.file).toString();
   const { birthtime, mtime } = fs.lstatSync(post.file);
 
-  post.title.link = path.basename(post.file)
+  post.title.link = path.join("blog/", path.basename(post.file)).toString();
 
   return {
     ...post,
@@ -79,37 +93,70 @@ function getGeneratorConfig(environment) {
     layoutFilesObj[name] = path.join(dir, name);
   }
 
-  return {
+  const generatorConfig = {
     metaconfig: {
       prod: environment === "prod",
-      home_path: environment === "prod" ? "/" : "index.html",
-      // TODO: maybe automate this as well
-      topbar: [
-        {
-          item: "Resume",
-          path: environment === "prod" ? "resume" : "resume.html",
-          prod: true,
-        },
-        {
-          item: "Projects",
-          path: environment === "prod" ? "projects" : "projects.html",
-          prod: true,
-        },
-        {
-          item: "Blog",
-          path: environment === "prod" ? "blog" : "blog.html",
-          prod: false,
-        },
-        {
-          item: "CV",
-          path: environment === "prod" ? "cv" : "cv.html",
-          prod: false,
-        },
-      ],
+      home_path: getHomePath(environment),
+      topbar: getTopBarItems(environment),
       paths: {
         layouts: layoutFilesObj,
         css: cssFiles,
       },
     },
   };
+  return generatorConfig;
+}
+
+function getHomePath(environment) {
+  const publicDirPath = getPublicDirPath(environment);
+  let homePath = path.join(publicDirPath, "index.html");
+
+  const { dir, base, name } = path.parse(homePath);
+  const isProd = environment === "prod";
+  const filename = isProd ? name : base;
+
+  homePath = path.join(dir, filename);
+  const homeAbsolutePath = path.resolve(homePath);
+  return homeAbsolutePath;
+}
+
+function getTopBarItems(environment) {
+  const publicDirPath = getPublicDirPath(environment);
+  const topbar = [
+    {
+      item: "Resume",
+      path: "resume.html",
+      prod: true,
+    },
+    {
+      item: "Projects",
+      path: "projects.html",
+      prod: true,
+    },
+    {
+      item: "Blog",
+      path: "blog.html",
+      prod: false,
+    },
+    {
+      item: "CV",
+      path: "cv.html",
+      prod: false,
+    },
+  ];
+
+  const formattedPaths = topbar.map((item) => {
+    const { dir, base, name } = path.parse(item.path);
+    const isProd = environment === "prod";
+    const filename = isProd ? name : base;
+
+    item.path = path.join(dir, filename);
+    const itemPathWithFolder = path.resolve(
+      path.join(publicDirPath, item.path),
+    );
+
+    return { ...item, path: itemPathWithFolder };
+  });
+
+  return formattedPaths;
 }
