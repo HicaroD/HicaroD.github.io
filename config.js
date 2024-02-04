@@ -87,6 +87,11 @@ function getGeneratorConfig(environment) {
     .filter((filepath) => filepath.endsWith(".ejs"))
     .map((filepath) => fs.realpathSync(path.join("layouts/", filepath)));
 
+  const jsFiles = fs
+    .readdirSync("assets/js/")
+    .filter((filepath) => filepath.endsWith(".js"))
+    .map((filepath) => path.join("assets/js/", filepath));
+
   const layoutFilesObj = {};
   for (const layoutFilePath of layoutFiles) {
     const { name, dir } = path.parse(layoutFilePath);
@@ -101,6 +106,7 @@ function getGeneratorConfig(environment) {
       paths: {
         layouts: layoutFilesObj,
         css: cssFiles,
+        js: jsFiles,
       },
     },
   };

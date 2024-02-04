@@ -8,6 +8,9 @@
     <% }); -%>
     <link rel="shortcut icon" href="<%= site.favicon %>" type="image/x-icon">
     <title><%= site.title %></title>
+    <% metaconfig.paths.js.forEach(function(path){ -%>
+      <script src="<%= path %>" defer></script>
+    <% }); -%>
   </head>
   <body>
     <%- include(metaconfig.paths.layouts.topbar); %>
