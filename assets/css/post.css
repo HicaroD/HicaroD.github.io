@@ -3,7 +3,7 @@
   font-weight: 500;
 }
 
-/* Generic block (notes, quotes, code blocks and etctera) */
+/* Generic block (notes, quotes, warning, tips and etctera) */
 #post .block {
   padding-left: 15px;
 }
