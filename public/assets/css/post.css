@@ -3,7 +3,7 @@
   font-weight: 500;
 }
 
-/* Generic block (notes, quotes, code blocks and etctera) */
+/* Generic block (notes, quotes, warning, tips and etctera) */
 #post .block {
   padding-left: 15px;
 }
@@ -15,7 +15,3 @@
 #post .block p:nth-child(2) {
   margin-top: 0px;
 }
-
-/* #post .note {
-  border-left: solid 4px #539bf5;
-} */
