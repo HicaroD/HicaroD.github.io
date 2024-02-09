@@ -48,7 +48,7 @@ function renderHTMLFiles(config) {
   for (const partialPath of partialPaths) {
     if (!isEJSFile(partialPath)) {
       throw Error(
-        `Invalid file in partials folder: ${partialPath}. Only '.ejs' file are allowed`,
+        `Invalid file in partials folder: ${partialPath}. Only '.ejs' file are allowed`
       );
     }
   }
