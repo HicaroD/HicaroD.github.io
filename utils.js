@@ -5,9 +5,12 @@ export function isEJSFile(filePath) {
 }
 
 export function getDayMonthYear(date) {
-  return {
-    day: date.getUTCDate(),
-    month: date.getUTCMonth() + 1,
-    year: date.getUTCFullYear(),
-  };
+  const formatter = new Intl.DateTimeFormat("en-GB", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  });
+
+  const formattedDate = formatter.format(date)
+  return formattedDate;
 }

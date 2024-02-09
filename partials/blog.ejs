@@ -4,7 +4,7 @@
     <div class="post">
       <h1 class="title"><a class= "link" href="<%= post.title.link %>"><%= post.title.name %></a></h1>
       <p><%= post.description %></p>
-      <p class="date"><%= post.createdAt.day %>-<%= post.createdAt.month %>-<%= post.createdAt.year %></p>
+      <p class="date"><%= post.createdAt %></p>
       <div class="tags">
       <% post.tags.forEach(function(tag){ -%>
         <p><a class="link" href="#">#<%= tag %></a></p>
