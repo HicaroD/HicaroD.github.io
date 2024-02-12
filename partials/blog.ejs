@@ -1,5 +1,19 @@
 <%- include(metaconfig.paths.layouts.start); %>
 <main id="blog">
-  <h1>welcome to hícaro's blog</h1>
+  <% posts.forEach(function(post){ -%>
+  <div class="post">
+    <h1 class="title">
+      <a class="link" href="<%= post.title.link %>"><%= post.title.name %></a>
+    </h1>
+    <p><%= post.description %></p>
+    <p class="date"><%= post.createdAt %></p>
+    <div class="tags">
+      <% post.tags.forEach(function(tag){ -%>
+      <p><a class="link" href="#">#<%= tag %></a></p>
+      <% }); -%>
+    </div>
+  </div>
+  <hr class="line" />
+  <% }); -%>
 </main>
 <%- include(metaconfig.paths.layouts.end); %>

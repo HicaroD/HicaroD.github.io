@@ -1,0 +1,17 @@
+#post .title {
+  font-family: "IBM Plex Serif";
+  font-weight: 500;
+}
+
+/* Generic block (notes, quotes, warning, tips and etctera) */
+#post .block {
+  padding-left: 15px;
+}
+
+#post .block p:nth-child(1) {
+  margin-bottom: 5px;
+}
+
+#post .block p:nth-child(2) {
+  margin-top: 0px;
+}

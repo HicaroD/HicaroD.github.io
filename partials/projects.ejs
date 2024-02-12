@@ -1,59 +1,124 @@
 <%- include(metaconfig.paths.layouts.start); %>
 <main id="projects">
   <div class="section">
-    <p id="projects" class="section-title"><a href="#projects">#</a> Projects I've built</p>
-    <p>These projects were built during my spare time and most of them are MIT
-    license. Use at your own risk.</p>
+    <p id="projects" class="section-title">
+      <a href="#projects">#</a> Projects I've built
+    </p>
+    <p>
+      These projects were built during my spare time and most of them are
+      licensed under the MIT license. Use at your own risk.
+    </p>
 
+    <!-- TODO: could I automate this?? -->
     <ul class="list">
-      <li><a class="link" href="https://github.com/HicaroD/chip8.rs"
-      target="_blank">chip8.rs</a> is a <a class="link"
-      href="https://en.wikipedia.org/wiki/CHIP-8" target="_blank">CHIP8
-      interpreter</a> written in Rust for playing retro games, such as Snake
-      and Space Invaders.</li>
+      <li>
+        <a
+          class="link"
+          href="https://github.com/HicaroD/chip8.rs"
+          target="_blank"
+          >chip8.rs</a
+        >
+        is a
+        <a
+          class="link"
+          href="https://en.wikipedia.org/wiki/CHIP-8"
+          target="_blank"
+          >CHIP8 interpreter</a
+        >
+        written in Rust for playing retro games, such as Snake and Space
+        Invaders.
+      </li>
 
-      <br>
+      <br />
 
-      <li><a class="link" href="https://github.com/HicaroD/filesystem.c"
-      target="_blank">filesystem.c</a> is a simple filesystem implementation
-      using <a class="link" target="_blank"
-      href="https://en.wikibooks.org/wiki/Operating_System_Design/File_Systems/Allocation#Linked_allocation">linked
-      allocation algorithm</a> written in C. Nothing too fancy, it was just for
-      learning purposes.</li>
+      <li>
+        <a
+          class="link"
+          href="https://github.com/HicaroD/filesystem.c"
+          target="_blank"
+          >filesystem.c</a
+        >
+        is a simple filesystem implementation using
+        <a
+          class="link"
+          target="_blank"
+          href="https://en.wikibooks.org/wiki/Operating_System_Design/File_Systems/Allocation#Linked_allocation"
+          >linked allocation algorithm</a
+        >
+        written in C. Nothing too fancy, it was just for learning purposes.
+      </li>
 
-      <br>
+      <br />
 
-      <li><a class="link" href="https://github.com/HicaroD/game-of-life"
-      target="_blank">game-of-life</a> is an implementation of <a class="link"
-      href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life"
-      target="_blank">"Conway's Game Of Life"</a> written in C++</li>
+      <li>
+        <a
+          class="link"
+          href="https://github.com/HicaroD/game-of-life"
+          target="_blank"
+          >game-of-life</a
+        >
+        is an implementation of
+        <a
+          class="link"
+          href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life"
+          target="_blank"
+          >"Conway's Game Of Life"</a
+        >
+        written in C++
+      </li>
 
-      <br>
+      <br />
 
-      <li><a class="link" href="https://github.com/HicaroD/TodoScanner"
-      target="_blank">TodoScanner</a> is a command-line interface written in
-      Golang for converting your TODO comments in issues on your open-source
-      repositories.</li>
+      <li>
+        <a
+          class="link"
+          href="https://github.com/HicaroD/TodoScanner"
+          target="_blank"
+          >TodoScanner</a
+        >
+        is a command-line interface written in Golang for converting your TODO
+        comments in issues on your open-source repositories.
+      </li>
 
-      <br>
+      <br />
 
-      <li><a class="link" href="https://github.com/HicaroD/SocialApp"
-      target="_blank">SocialApp</a> is an API written in <a class="link"
-      href="https://fastapi.tiangolo.com/" target="_blank">FastAPI - a Python
-      web framework -</a> for simulating a social media. By using a <a
-      class="link" href="https://en.wikipedia.org/wiki/Graph_database"
-      target="_blank">graph-based database</a> called <a class="link"
-      href="https://en.wikipedia.org/wiki/Neo4j" target="_blank">Neo4J</a>, I
-      could simulate some social media features, such as following,
-      unfollowing, and comment on a post. Additionally, I've used <a
-      class="link" href="https://en.wikipedia.org/wiki/PostgreSQL"
-      target="_blank">PostgreSQL</a> for storing other informations, such
-      as comments to other user's posts.</li>
+      <li>
+        <a
+          class="link"
+          href="https://github.com/HicaroD/SocialApp"
+          target="_blank"
+          >SocialApp</a
+        >
+        is an API written in
+        <a class="link" href="https://fastapi.tiangolo.com/" target="_blank"
+          >FastAPI - a Python web framework -</a
+        >
+        for simulating a social media. By using a
+        <a
+          class="link"
+          href="https://en.wikipedia.org/wiki/Graph_database"
+          target="_blank"
+          >graph-based database</a
+        >
+        called
+        <a
+          class="link"
+          href="https://en.wikipedia.org/wiki/Neo4j"
+          target="_blank"
+          >Neo4J</a
+        >, I could simulate some social media features, such as following,
+        unfollowing, and comment on a post. Additionally, I've used
+        <a
+          class="link"
+          href="https://en.wikipedia.org/wiki/PostgreSQL"
+          target="_blank"
+          >PostgreSQL</a
+        >
+        for storing other informations, such as comments to other user's posts.
+      </li>
 
-      <br>
-
+      <br />
     </ul>
-
   </div>
 </main>
 <%- include(metaconfig.paths.layouts.end); %>
