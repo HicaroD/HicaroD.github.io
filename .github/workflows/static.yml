@@ -24,10 +24,10 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Setup Git
-        # TODO: get information, such as token, from GitHub Actions
         run: |
-          git config --global user.name 'Your Name'
-          git config --global user.email 'your-username@users.noreply.github.com'
+          git config --global user.name HicaroD
+          git config --global user.email ${{ secrets.EMAIL }}
+          git remote add origin https://${{ secrets.BLOG_GITHUB_TOKEN_CI }}@github.com/${{ github.repository }}
 
       - name: Set Node.js 19.x
         uses: actions/setup-node@v3
@@ -46,7 +46,7 @@ jobs:
 
       - name: Push
         run: |
-          git commit . -m ""
+          git commit -m "ci: deploying latest changes (${{ github.run_number}})" .
           git push origin master
 
   deploy:
