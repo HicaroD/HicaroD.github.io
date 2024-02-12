@@ -6,6 +6,20 @@
     "role": "Software engineer"
   },
   "home": {
-    "photo": "./assets/images/me_2.jpeg"
-  }
+    "photo": "assets/images/me_2.jpeg"
+  },
+  "posts": [
+    {
+      "title": { "name": "My first post", "link": "#" },
+      "description": "That's my first post description",
+      "file": "_posts/my-first-post.html",
+      "tags": ["rust", "web"]
+    },
+    {
+      "title": { "name": "My second blog post", "link": "#" },
+      "description": "That's my second post description",
+      "file": "_posts/my-second-post.html",
+      "tags": ["cpp"]
+    }
+  ]
 }

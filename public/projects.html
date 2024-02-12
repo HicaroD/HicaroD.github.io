@@ -3,27 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          <link rel="stylesheet" href="assets/css/globals.css" type="text/css" media="all" />
-          <link rel="stylesheet" href="assets/css/topbar.css" type="text/css" media="all" />
-          <link rel="stylesheet" href="assets/css/home.css" type="text/css" media="all" />
-          <link rel="stylesheet" href="assets/css/resume.css" type="text/css" media="all" />
-        <link rel="shortcut icon" href="assets/images/me.png" type="image/x-icon">
+          <link rel="stylesheet" href="/home/hicaro/Documentos/Projects/hicaro/assets/css/blog.css" type="text/css" media="all" />
+          <link rel="stylesheet" href="/home/hicaro/Documentos/Projects/hicaro/assets/css/globals.css" type="text/css" media="all" />
+          <link rel="stylesheet" href="/home/hicaro/Documentos/Projects/hicaro/assets/css/home.css" type="text/css" media="all" />
+          <link rel="stylesheet" href="/home/hicaro/Documentos/Projects/hicaro/assets/css/post.css" type="text/css" media="all" />
+          <link rel="stylesheet" href="/home/hicaro/Documentos/Projects/hicaro/assets/css/resume.css" type="text/css" media="all" />
+          <link rel="stylesheet" href="/home/hicaro/Documentos/Projects/hicaro/assets/css/topbar.css" type="text/css" media="all" />
+        <link rel="shortcut icon" href="/home/hicaro/Documentos/Projects/hicaro/assets/images/me.png" type="image/x-icon">
     <title>Hícaro Dânrlley</title>
-  </head>
+          <script src="/home/hicaro/Documentos/Projects/hicaro/assets/js/posts.js" defer></script>
+      </head>
   <body>
     <nav id="topbar">
   <div class="me">
-    <img src="assets/images/me.png" alt="profile-pic" />
-    <p class="name"><a class="link" href="/">Hícaro Dânrlley</a></p>
+    <img src="/home/hicaro/Documentos/Projects/hicaro/assets/images/me.png" alt="profile-pic" />
+    <p class="name"><a class="link" href="/home/hicaro/Documentos/Projects/hicaro/public">Hícaro Dânrlley</a></p>
   </div>
 
   <ul class="items">
   
           
-        <li class="item"><a class="link" href="resume">Resume</a></li>
+        <li class="item"><a class="link" href="/home/hicaro/Documentos/Projects/hicaro/public/resume">Resume</a></li>
       
           
-        <li class="item"><a class="link" href="projects">Projects</a></li>
+        <li class="item"><a class="link" href="/home/hicaro/Documentos/Projects/hicaro/public/projects">Projects</a></li>
       
           
           
@@ -34,64 +37,129 @@
   </ul>
 </nav>
 
-<hr id="navbar-line" />
+<hr class="line" />
 
 
 <main id="projects">
   <div class="section">
-    <p id="projects" class="section-title"><a href="#projects">#</a> Projects I've built</p>
-    <p>These projects were built during my spare time and most of them are MIT
-    license. Use at your own risk.</p>
+    <p id="projects" class="section-title">
+      <a href="#projects">#</a> Projects I've built
+    </p>
+    <p>
+      These projects were built during my spare time and most of them are
+      licensed under the MIT license. Use at your own risk.
+    </p>
 
+    <!-- TODO: could I automate this?? -->
     <ul class="list">
-      <li><a class="link" href="https://github.com/HicaroD/chip8.rs"
-      target="_blank">chip8.rs</a> is a <a class="link"
-      href="https://en.wikipedia.org/wiki/CHIP-8" target="_blank">CHIP8
-      interpreter</a> written in Rust for playing retro games, such as Snake
-      and Space Invaders.</li>
+      <li>
+        <a
+          class="link"
+          href="https://github.com/HicaroD/chip8.rs"
+          target="_blank"
+          >chip8.rs</a
+        >
+        is a
+        <a
+          class="link"
+          href="https://en.wikipedia.org/wiki/CHIP-8"
+          target="_blank"
+          >CHIP8 interpreter</a
+        >
+        written in Rust for playing retro games, such as Snake and Space
+        Invaders.
+      </li>
 
-      <br>
+      <br />
 
-      <li><a class="link" href="https://github.com/HicaroD/filesystem.c"
-      target="_blank">filesystem.c</a> is a simple filesystem implementation
-      using <a class="link" target="_blank"
-      href="https://en.wikibooks.org/wiki/Operating_System_Design/File_Systems/Allocation#Linked_allocation">linked
-      allocation algorithm</a> written in C. Nothing too fancy, it was just for
-      learning purposes.</li>
+      <li>
+        <a
+          class="link"
+          href="https://github.com/HicaroD/filesystem.c"
+          target="_blank"
+          >filesystem.c</a
+        >
+        is a simple filesystem implementation using
+        <a
+          class="link"
+          target="_blank"
+          href="https://en.wikibooks.org/wiki/Operating_System_Design/File_Systems/Allocation#Linked_allocation"
+          >linked allocation algorithm</a
+        >
+        written in C. Nothing too fancy, it was just for learning purposes.
+      </li>
 
-      <br>
+      <br />
 
-      <li><a class="link" href="https://github.com/HicaroD/game-of-life"
-      target="_blank">game-of-life</a> is an implementation of <a class="link"
-      href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life"
-      target="_blank">"Conway's Game Of Life"</a> written in C++</li>
+      <li>
+        <a
+          class="link"
+          href="https://github.com/HicaroD/game-of-life"
+          target="_blank"
+          >game-of-life</a
+        >
+        is an implementation of
+        <a
+          class="link"
+          href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life"
+          target="_blank"
+          >"Conway's Game Of Life"</a
+        >
+        written in C++
+      </li>
 
-      <br>
+      <br />
 
-      <li><a class="link" href="https://github.com/HicaroD/TodoScanner"
-      target="_blank">TodoScanner</a> is a command-line interface written in
-      Golang for converting your TODO comments in issues on your open-source
-      repositories.</li>
+      <li>
+        <a
+          class="link"
+          href="https://github.com/HicaroD/TodoScanner"
+          target="_blank"
+          >TodoScanner</a
+        >
+        is a command-line interface written in Golang for converting your TODO
+        comments in issues on your open-source repositories.
+      </li>
 
-      <br>
+      <br />
 
-      <li><a class="link" href="https://github.com/HicaroD/SocialApp"
-      target="_blank">SocialApp</a> is an API written in <a class="link"
-      href="https://fastapi.tiangolo.com/" target="_blank">FastAPI - a Python
-      web framework -</a> for simulating a social media. By using a <a
-      class="link" href="https://en.wikipedia.org/wiki/Graph_database"
-      target="_blank">graph-based database</a> called <a class="link"
-      href="https://en.wikipedia.org/wiki/Neo4j" target="_blank">Neo4J</a>, I
-      could simulate some social media features, such as following,
-      unfollowing, and comment on a post. Additionally, I've used <a
-      class="link" href="https://en.wikipedia.org/wiki/PostgreSQL"
-      target="_blank">PostgreSQL</a> for storing other informations, such
-      as comments to other user's posts.</li>
+      <li>
+        <a
+          class="link"
+          href="https://github.com/HicaroD/SocialApp"
+          target="_blank"
+          >SocialApp</a
+        >
+        is an API written in
+        <a class="link" href="https://fastapi.tiangolo.com/" target="_blank"
+          >FastAPI - a Python web framework -</a
+        >
+        for simulating a social media. By using a
+        <a
+          class="link"
+          href="https://en.wikipedia.org/wiki/Graph_database"
+          target="_blank"
+          >graph-based database</a
+        >
+        called
+        <a
+          class="link"
+          href="https://en.wikipedia.org/wiki/Neo4j"
+          target="_blank"
+          >Neo4J</a
+        >, I could simulate some social media features, such as following,
+        unfollowing, and comment on a post. Additionally, I've used
+        <a
+          class="link"
+          href="https://en.wikipedia.org/wiki/PostgreSQL"
+          target="_blank"
+          >PostgreSQL</a
+        >
+        for storing other informations, such as comments to other user's posts.
+      </li>
 
-      <br>
-
+      <br />
     </ul>
-
   </div>
 </main>
   </body>
