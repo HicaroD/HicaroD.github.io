@@ -4,8 +4,8 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "serve": "yarn build:local && http-server ./_public",
-    "build:local": "ENVIRON=local node main.js",
+    "serve:debug": "yarn build:debug && http-server ./_public",
+    "build:debug": "ENVIRON=debug node main.js",
     "build:prod": "ENVIRON=prod node main.js"
   },
   "dependencies": {

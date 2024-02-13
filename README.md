@@ -26,7 +26,7 @@ See [Yarn docs for global configurations](https://classic.yarnpkg.com/lang/en/do
 For local testing:
 
 ```bash
-yarn serve
+yarn serve:debug
 ```
 
 This command above will generate a `_public` directory containing all the
@@ -37,7 +37,7 @@ static files, it will spawn a local server in the port `:8080`. Access
 For a debug build:
 
 ```bash
-yarn build:local
+yarn build:debug
 ```
 
 This command above will generate a `_public` directory containing all the
