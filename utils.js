@@ -11,6 +11,6 @@ export function getDayMonthYear(date) {
     day: "2-digit",
   });
 
-  const formattedDate = formatter.format(date)
+  const formattedDate = formatter.format(date);
   return formattedDate;
 }
