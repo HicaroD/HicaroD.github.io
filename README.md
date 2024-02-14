@@ -34,6 +34,17 @@ statically generated files for testing purposes and, after generating all the
 static files, it will spawn a local server in the port `:8080`. Access
 `localhost:8080` on your browser.
 
+For local production testing:
+
+```bash
+yarn serve:prod
+```
+
+This command above will just spawn a local server using the files contained in
+the `public` directory. Don't worry, it won't generate a new `public` folder. If
+you want to see how your website is going to look like in the production server,
+use `yarn build:prod` and then `yarn serve:prod`.
+
 For a debug build:
 
 ```bash

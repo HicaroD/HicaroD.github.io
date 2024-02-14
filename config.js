@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { getDayMonthYear } from "./utils.js";
+import { getDayMonthYear, getFormattedPath } from "./utils.js";
 
 const CONFIG_FILE = "./config.json";
 const PROD_PUBLIC_DIR = "./public";
@@ -11,7 +11,7 @@ export function getEnvironmentSetup() {
   const environment = process.env.ENVIRON;
   if (environment === undefined) {
     throw new Error(
-      "Consider setting an environment variable, such as 'ENVIRON=prod' or 'ENVIRON=debug'",
+      "Consider setting an environment variable, such as 'ENVIRON=prod' or 'ENVIRON=debug'"
     );
   }
   if (environment !== "prod" && environment !== "debug") {
@@ -25,35 +25,20 @@ export function getConfig(environment) {
   const userConfig = getUserConfig();
   const generatorConfig = getGeneratorConfig(environment);
   const wholeConfig = Object.assign(userConfig, generatorConfig);
-  const formattedConfig = getFormattedConfig(wholeConfig);
-  console.log(formattedConfig);
+  const formattedConfig = getFormattedConfig(wholeConfig, environment);
   return formattedConfig;
 }
 
-function getFormattedConfig(config) {
+function getFormattedConfig(config, environment) {
   for (const key in config) {
     const value = config[key];
     if (fs.existsSync(value)) {
-      config[key] = getFormattedPath(config[key]);
+      config[key] = getFormattedPath(config[key], environment);
     } else if (typeof value == "object") {
-      config[key] = getFormattedConfig(value);
+      config[key] = getFormattedConfig(value, environment);
     }
   }
   return config;
-}
-
-function getFormattedPath(unformattedPath) {
-  const publicDirName = getPublicDirPath();
-  const currentDir = path.resolve("./");
-
-  let formattedPath = path.resolve(unformattedPath).replace(currentDir, "");
-  if (formattedPath.startsWith("/" + publicDirName)) {
-    formattedPath = formattedPath.replace("/" + publicDirName, "");
-  }
-  if (formattedPath.startsWith("/" + "_posts")) {
-    formattedPath = formattedPath.replace("/_posts", "/blog");
-  }
-  return formattedPath;
 }
 
 function getUserConfig() {
@@ -69,7 +54,7 @@ function getPostInfo(post) {
   const postContent = fs.readFileSync(post.file).toString();
   const { birthtime, mtime } = fs.lstatSync(post.file);
 
-  post.title.link = getFormattedPath(post.file);
+  post.title.link = path.basename(post.file, ".html");
 
   return {
     ...post,

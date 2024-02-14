@@ -27,13 +27,8 @@ function generateHTMLFiles(renderedHTMLFiles, environment) {
 }
 
 function generateBlogPostFolder(renderedBlogPosts, publicDirPath) {
-  const postsFolder = `${publicDirPath}/blog`;
-  if (fs.existsSync(postsFolder)) {
-    fs.rmSync(postsFolder, { recursive: true });
-  }
-  fs.mkdirSync(postsFolder);
   for (const [postFilename, blogPost] of Object.entries(renderedBlogPosts)) {
-    fs.writeFileSync(`${postsFolder}/${postFilename}`, blogPost);
+    fs.writeFileSync(`${publicDirPath}/${postFilename}`, blogPost);
   }
 }
 
@@ -48,7 +43,7 @@ function renderHTMLFiles(config) {
   for (const partialPath of partialPaths) {
     if (!isEJSFile(partialPath)) {
       throw Error(
-        `Invalid file in partials folder: ${partialPath}. Only '.ejs' file are allowed`,
+        `Invalid file in partials folder: ${partialPath}. Only '.ejs' file are allowed`
       );
     }
   }
