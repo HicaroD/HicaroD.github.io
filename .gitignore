@@ -132,5 +132,6 @@ dist
 # Others
 TODO.md
 
-# Local public directory
+# Local public directories
 _public
+public
