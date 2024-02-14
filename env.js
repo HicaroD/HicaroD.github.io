@@ -11,7 +11,6 @@ function getEnvironmentSetup() {
   if (environment !== "prod" && environment !== "debug") {
     throw new Error(`Invalid value for ENVIRON variable: '${environment}'`);
   }
-  console.log(`Setting up ${environment} build`);
   return environment;
 }
 
@@ -19,7 +18,5 @@ const environment = getEnvironmentSetup();
 const publicDirPath =
   environment === "prod" ? PROD_PUBLIC_DIR : LOCAL_PUBLIC_DIR;
 
-export default {
-  ENVIRONMENT: environment,
-  PUBLIC_DIR_PATH: publicDirPath,
-};
+export const ENVIRONMENT = environment;
+export const PUBLIC_DIR_PATH = publicDirPath;

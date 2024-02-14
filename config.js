@@ -4,7 +4,7 @@ import { getDayMonthYear, getFormattedPath } from "./utils.js";
 
 const CONFIG_FILE = "./config.json";
 const ASSETS_DIR = "./assets";
-import { PUBLIC_DIR_PATH } from "env.js";
+import { PUBLIC_DIR_PATH } from "./env.js";
 
 export function getEnvironmentSetup() {
   const environment = process.env.ENVIRON;
@@ -16,7 +16,6 @@ export function getEnvironmentSetup() {
   if (environment !== "prod" && environment !== "debug") {
     throw new Error(`Invalid value for ENVIRON variable: '${environment}'`);
   }
-  console.log(`Setting up ${environment} build`);
   return environment;
 }
 

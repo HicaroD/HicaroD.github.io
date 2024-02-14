@@ -5,7 +5,7 @@ import ejs from "ejs";
 import { getEnvironmentSetup, getConfig, buildPublicDir } from "./config.js";
 import { isEJSFile } from "./utils.js";
 
-import { PUBLIC_DIR_PATH } from "env.js";
+import { PUBLIC_DIR_PATH } from "./env.js";
 
 const PARTIALS_DIR = "./partials";
 
@@ -19,7 +19,6 @@ function generateHTMLFiles(renderedHTMLFiles) {
     fs.writeFileSync(`${PUBLIC_DIR_PATH}/${filename}`, renderedHTML);
   }
   generateBlogPosts(renderedHTMLFiles["blog"], PUBLIC_DIR_PATH);
-  console.log("Files generated successfuly");
 }
 
 function generateBlogPosts(renderedBlogPosts) {
