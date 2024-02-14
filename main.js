@@ -2,38 +2,28 @@ import fs from "fs";
 import path from "path";
 import ejs from "ejs";
 
-import {
-  getEnvironmentSetup,
-  getConfig,
-  buildPublicDir,
-  getPublicDirPath,
-} from "./config.js";
+import { getEnvironmentSetup, getConfig, buildPublicDir } from "./config.js";
 import { isEJSFile } from "./utils.js";
+
+import { PUBLIC_DIR_PATH } from "./env.js";
 
 const PARTIALS_DIR = "./partials";
 
-function generateHTMLFiles(renderedHTMLFiles, environment) {
-  const publicDir = getPublicDirPath(environment);
-  buildPublicDir(environment);
+function generateHTMLFiles(renderedHTMLFiles) {
+  buildPublicDir();
 
   for (const [filename, renderedHTML] of Object.entries(renderedHTMLFiles)) {
     if (filename == "blog") {
       continue;
     }
-    fs.writeFileSync(`${publicDir}/${filename}`, renderedHTML);
+    fs.writeFileSync(`${PUBLIC_DIR_PATH}/${filename}`, renderedHTML);
   }
-  generateBlogPostFolder(renderedHTMLFiles["blog"], publicDir);
-  console.log("Files generated successfuly");
+  generateBlogPosts(renderedHTMLFiles["blog"], PUBLIC_DIR_PATH);
 }
 
-function generateBlogPostFolder(renderedBlogPosts, publicDirPath) {
-  const postsFolder = `${publicDirPath}/blog`;
-  if (fs.existsSync(postsFolder)) {
-    fs.rmSync(postsFolder, { recursive: true });
-  }
-  fs.mkdirSync(postsFolder);
+function generateBlogPosts(renderedBlogPosts) {
   for (const [postFilename, blogPost] of Object.entries(renderedBlogPosts)) {
-    fs.writeFileSync(`${postsFolder}/${postFilename}`, blogPost);
+    fs.writeFileSync(`${PUBLIC_DIR_PATH}/${postFilename}`, blogPost);
   }
 }
 

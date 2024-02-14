@@ -27,7 +27,7 @@ jobs:
         run: |
           git config --global user.name HicaroD
           git config --global user.email ${{ secrets.EMAIL }}
-          git remote add origin https://${{ secrets.BLOG_GITHUB_TOKEN_CI }}@github.com/${{ github.repository }}
+          git remote set-url origin https://${{ secrets.BLOG_GITHUB_TOKEN_CI }}@github.com/${{ github.repository }}
 
       - name: Set Node.js 19.x
         uses: actions/setup-node@v3

@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+
 function createParagraph(content) {
   const paragraph = document.createElement("p");
   paragraph.innerHTML += content;

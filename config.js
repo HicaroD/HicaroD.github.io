@@ -1,20 +1,19 @@
 import fs from "fs";
 import path from "path";
-import { getDayMonthYear } from "./utils.js";
+import { getDayMonthYear, getFormattedPath } from "./utils.js";
 
 const CONFIG_FILE = "./config.json";
-const PROD_PUBLIC_DIR = "./public";
-const LOCAL_PUBLIC_DIR = "./_public";
 const ASSETS_DIR = "./assets";
+import { PUBLIC_DIR_PATH } from "./env.js";
 
 export function getEnvironmentSetup() {
   const environment = process.env.ENVIRON;
   if (environment === undefined) {
     throw new Error(
-      "Consider setting an environment variable, such as 'ENVIRON=prod' or 'ENVIRON=local'",
+      "Consider setting an environment variable, such as 'ENVIRON=prod' or 'ENVIRON=debug'"
     );
   }
-  if (environment !== "prod" && environment !== "local") {
+  if (environment !== "prod" && environment !== "debug") {
     throw new Error(`Invalid value for ENVIRON variable: '${environment}'`);
   }
   return environment;
@@ -24,17 +23,17 @@ export function getConfig(environment) {
   const userConfig = getUserConfig();
   const generatorConfig = getGeneratorConfig(environment);
   const wholeConfig = Object.assign(userConfig, generatorConfig);
-  const formattedConfig = getFormattedConfig(wholeConfig);
+  const formattedConfig = getFormattedConfig(wholeConfig, environment);
   return formattedConfig;
 }
 
-function getFormattedConfig(config) {
+function getFormattedConfig(config, environment) {
   for (const key in config) {
     const value = config[key];
     if (fs.existsSync(value)) {
-      config[key] = path.resolve(config[key]);
+      config[key] = getFormattedPath(config[key], environment);
     } else if (typeof value == "object") {
-      config[key] = getFormattedConfig(value);
+      config[key] = getFormattedConfig(value, environment);
     }
   }
   return config;
@@ -53,7 +52,7 @@ function getPostInfo(post) {
   const postContent = fs.readFileSync(post.file).toString();
   const { birthtime, mtime } = fs.lstatSync(post.file);
 
-  post.title.link = path.join("blog/", path.basename(post.file)).toString();
+  post.title.link = path.basename(post.file, ".html");
 
   return {
     ...post,
@@ -63,17 +62,14 @@ function getPostInfo(post) {
   };
 }
 
-export function buildPublicDir(environment) {
-  const publicDir = getPublicDirPath(environment);
-  if (fs.existsSync(publicDir)) {
-    fs.rmSync(publicDir, { recursive: true });
+export function buildPublicDir() {
+  if (fs.existsSync(PUBLIC_DIR_PATH)) {
+    fs.rmSync(PUBLIC_DIR_PATH, { recursive: true });
   }
-  fs.mkdirSync(publicDir);
-  fs.cpSync(ASSETS_DIR, `${publicDir}/${ASSETS_DIR}`, { recursive: true });
-}
-
-export function getPublicDirPath(environment) {
-  return environment === "prod" ? PROD_PUBLIC_DIR : LOCAL_PUBLIC_DIR;
+  fs.mkdirSync(PUBLIC_DIR_PATH);
+  fs.cpSync(ASSETS_DIR, `${PUBLIC_DIR_PATH}/${ASSETS_DIR}`, {
+    recursive: true,
+  });
 }
 
 function getGeneratorConfig(environment) {
@@ -101,7 +97,6 @@ function getGeneratorConfig(environment) {
   const generatorConfig = {
     metaconfig: {
       prod: environment === "prod",
-      home_path: getHomePath(environment),
       topbar: getTopBarItems(environment),
       paths: {
         layouts: layoutFilesObj,
@@ -113,21 +108,7 @@ function getGeneratorConfig(environment) {
   return generatorConfig;
 }
 
-function getHomePath(environment) {
-  const publicDirPath = getPublicDirPath(environment);
-  let homePath = path.join(publicDirPath, "index.html");
-
-  const { dir, base } = path.parse(homePath);
-  const isProd = environment === "prod";
-  const filename = isProd ? "/" : base;
-
-  homePath = path.join(dir, filename);
-  const homeAbsolutePath = path.resolve(homePath);
-  return homeAbsolutePath;
-}
-
 function getTopBarItems(environment) {
-  const publicDirPath = getPublicDirPath(environment);
   const topbar = [
     {
       item: "Resume",
@@ -157,9 +138,7 @@ function getTopBarItems(environment) {
     const filename = isProd ? name : base;
 
     item.path = path.join(dir, filename);
-    const itemPathWithFolder = path.resolve(
-      path.join(publicDirPath, item.path),
-    );
+    const itemPathWithFolder = item.path;
 
     return { ...item, path: itemPathWithFolder };
   });
