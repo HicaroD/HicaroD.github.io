@@ -3,9 +3,8 @@ import path from "path";
 import { getDayMonthYear, getFormattedPath } from "./utils.js";
 
 const CONFIG_FILE = "./config.json";
-const PROD_PUBLIC_DIR = "./public";
-const LOCAL_PUBLIC_DIR = "./_public";
 const ASSETS_DIR = "./assets";
+import { PUBLIC_DIR_PATH } from "env.js";
 
 export function getEnvironmentSetup() {
   const environment = process.env.ENVIRON;
@@ -64,17 +63,14 @@ function getPostInfo(post) {
   };
 }
 
-export function buildPublicDir(environment) {
-  const publicDir = getPublicDirPath(environment);
-  if (fs.existsSync(publicDir)) {
-    fs.rmSync(publicDir, { recursive: true });
+export function buildPublicDir() {
+  if (fs.existsSync(PUBLIC_DIR_PATH)) {
+    fs.rmSync(PUBLIC_DIR_PATH, { recursive: true });
   }
-  fs.mkdirSync(publicDir);
-  fs.cpSync(ASSETS_DIR, `${publicDir}/${ASSETS_DIR}`, { recursive: true });
-}
-
-export function getPublicDirPath(environment) {
-  return environment === "prod" ? PROD_PUBLIC_DIR : LOCAL_PUBLIC_DIR;
+  fs.mkdirSync(PUBLIC_DIR_PATH);
+  fs.cpSync(ASSETS_DIR, `${PUBLIC_DIR_PATH}/${ASSETS_DIR}`, {
+    recursive: true,
+  });
 }
 
 function getGeneratorConfig(environment) {
