@@ -132,6 +132,5 @@ dist
 # Others
 TODO.md
 
-# Local public directories
+# Debug public directory
 _public
-public
