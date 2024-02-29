@@ -47,7 +47,7 @@ jobs:
       - name: Push
         run: |
           if [ $(git status --untracked-files=normal | grep "public/" --count) -ge 1 ]; then git add public; fi
-          git commit -m "ci: deploying latest changes (${{ github.run_number}})" .
+          if [ $(dirname -- $(git diff --name-only) | grep "public" --count) -ge 1 ]; then git commit -m "ci: deploying latest changes (${{ github.run_number}})" . ; fi
           git push origin master
 
   deploy:
