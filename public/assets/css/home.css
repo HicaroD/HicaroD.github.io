@@ -1,0 +1,28 @@
+/* Intro */
+#home .intro {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#home p {
+  font-size: 20px;
+  margin: 5px auto;
+}
+
+#home .intro .personal-pic {
+  border-radius: 5px;
+  width: 320px;
+  height: 450px;
+}
+
+#home #name {
+  font-size: 40px;
+  color: #4eaaee;
+}
+
+#home #description {
+  width: 300px;
+  text-align: center;
+}
