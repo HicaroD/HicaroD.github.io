@@ -5,7 +5,7 @@ function getEnvironmentSetup() {
   const environment = process.env.ENVIRON;
   if (environment === undefined) {
     throw new Error(
-      "Consider setting an environment variable, such as 'ENVIRON=prod' or 'ENVIRON=debug'"
+      "Consider setting an environment variable, such as 'ENVIRON=prod' or 'ENVIRON=debug'",
     );
   }
   if (environment !== "prod" && environment !== "debug") {

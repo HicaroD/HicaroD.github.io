@@ -1,0 +1,19 @@
+.education-location,
+.education-stage,
+.work-location,
+.work-stage {
+  display: flex;
+  justify-content: space-between;
+}
+
+.education-location,
+.work-location {
+  font-weight: bold;
+}
+
+.education-location > p,
+.work-location > p,
+.education-stage > p,
+.work-stage > p {
+  margin: 0;
+}
