@@ -25,7 +25,25 @@
 
 <div class="codeblocks">
   <pre><code>
-if True:
-  print("Hello, world!")
+# file: download.py
+
+def download(directory, filename):
+  """Download (and unzip) a file from the MNIST dataset if not already done."""
+  filepath = os.path.join(directory, filename)
+  if tf.io.gfile.exists(filepath):
+    return filepath
+  if not tf.io.gfile.exists(directory):
+    tf.io.gfile.makedirs(directory)
+  # CVDF mirror of http://yann.lecun.com/exdb/mnist/
+  url = 'https://storage.googleapis.com/cvdf-datasets/mnist/' + filename + '.gz'
+  _, zipped_filepath = tempfile.mkstemp(suffix='.gz')
+  print('Downloading %s to %s' % (url, zipped_filepath))
+  urllib.request.urlretrieve(url, zipped_filepath)
+  with gzip.open(zipped_filepath, 'rb') as f_in, tf.io.gfile.Gfile(
+      filepath, 'wb'
+  ) as f_out:
+    shutil.copyfileobj(f_in, f_out)
+  os.remove(zipped_filepath)
+  return filepath
   </code></pre>
 </div>

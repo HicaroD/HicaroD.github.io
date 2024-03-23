@@ -21,7 +21,7 @@ export function getEnvironmentSetup() {
 
 export function getConfig(environment) {
   const userConfig = getUserConfig();
-  const generatorConfig = getGeneratorConfig(environment);
+  const generatorConfig = getGeneratorConfig(userConfig, environment);
   const wholeConfig = Object.assign(userConfig, generatorConfig);
   const formattedConfig = getFormattedConfig(wholeConfig, environment);
   return formattedConfig;
@@ -72,7 +72,7 @@ export function buildPublicDir() {
   });
 }
 
-function getGeneratorConfig(environment) {
+function getGeneratorConfig(userConfig, environment) {
   const cssFiles = fs
     .readdirSync("assets/css/")
     .filter((filepath) => filepath.endsWith(".css"))
@@ -97,7 +97,7 @@ function getGeneratorConfig(environment) {
   const generatorConfig = {
     metaconfig: {
       prod: environment === "prod",
-      topbar: getTopBarItems(environment),
+      topbar: getTopBarItems(userConfig, environment),
       paths: {
         layouts: layoutFilesObj,
         css: cssFiles,
@@ -108,31 +108,8 @@ function getGeneratorConfig(environment) {
   return generatorConfig;
 }
 
-function getTopBarItems(environment) {
-  const topbar = [
-    {
-      item: "Resume",
-      path: "resume.html",
-      prod: true,
-    },
-    {
-      item: "Projects",
-      path: "projects.html",
-      prod: true,
-    },
-    {
-      item: "Blog",
-      path: "blog.html",
-      prod: false,
-    },
-    {
-      item: "CV",
-      path: "cv.html",
-      prod: false,
-    },
-  ];
-
-  const formattedPaths = topbar.map((item) => {
+function getTopBarItems(userConfig, environment) {
+  const formattedPaths = userConfig.visibility.map((item) => {
     const { dir, base, name } = path.parse(item.path);
     const isProd = environment === "prod";
     const filename = isProd ? name : base;
