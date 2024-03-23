@@ -1,0 +1,14 @@
+.education-location,
+.education-stage {
+  display: flex;
+  justify-content: space-between;
+}
+
+.education-location {
+  font-weight: bold;
+}
+
+.education-location > p,
+.education-stage > p {
+  margin: 0;
+}
