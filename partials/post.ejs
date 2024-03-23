@@ -1,6 +1,7 @@
 <%- include(metaconfig.paths.layouts.start); %>
 <main id="post">
   <h1 class="title"><%- posts[blogPostIndex].title.name %></h1>
+  <p class="created-at"><i><%- posts[blogPostIndex].createdAt %></i></p>
   <hr class="line" />
   <%- posts[blogPostIndex].content %>
   <hr class="line" />

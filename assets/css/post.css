@@ -20,3 +20,12 @@
   padding: 0px auto;
   font-size: 16px;
 }
+
+#post .title {
+  font-size: 250%;
+  margin-bottom: 10px;
+}
+
+#post .created-at {
+  margin: 0px auto;
+}
