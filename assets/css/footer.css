@@ -1,0 +1,12 @@
+/* My picture + Name */
+#footer {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+#footer .me img {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+}

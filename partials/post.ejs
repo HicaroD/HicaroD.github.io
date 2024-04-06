@@ -4,8 +4,7 @@
     <h1 class="title"><%- posts[blogPostIndex].title.name %></h1>
     <p class="created-at">Hícaro Dânrlley — <%- posts[blogPostIndex].createdAt %></p>
   </div>
-
   <%- posts[blogPostIndex].content %>
-  <hr class="line" />
 </main>
+<%- include(metaconfig.paths.layouts.footer); %>
 <%- include(metaconfig.paths.layouts.end); %>
