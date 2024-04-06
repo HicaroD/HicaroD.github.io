@@ -1,19 +1,23 @@
-.education-location,
-.education-stage,
-.work-location,
-.work-stage {
+#resume .about-me {
+  text-align: justify;
+}
+
+#resume .education-location,
+#resume .education-stage,
+#resume .work-location,
+#resume .work-stage {
   display: flex;
   justify-content: space-between;
 }
 
-.education-location,
-.work-location {
+#resume .education-location,
+#resume .work-location {
   font-weight: bold;
 }
 
-.education-location > p,
-.work-location > p,
-.education-stage > p,
-.work-stage > p {
+#resume .education-location > p,
+#resume .work-location > p,
+#resume .education-stage > p,
+#resume .work-stage > p {
   margin: 0;
 }
