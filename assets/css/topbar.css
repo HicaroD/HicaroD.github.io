@@ -43,3 +43,7 @@
 #topbar .items li {
   list-style: none;
 }
+
+.topbar-line {
+  margin: 2rem auto;
+}
