@@ -37,11 +37,6 @@
       "item": "Blog",
       "path": "blog.html",
       "prod": false
-    },
-    {
-      "item": "CV",
-      "path": "cv.html",
-      "prod": false
     }
   ]
 }
