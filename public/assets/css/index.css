@@ -45,3 +45,49 @@
     height: 300px;
   }
 }
+
+@media screen and (max-width: 550px) {
+  #home .intro {
+    flex-direction: column;
+  }
+
+  #home #name {
+    font-size: 22px;
+  }
+
+  #home p {
+    font-size: 16px;
+  }
+
+  #home .info {
+    text-align: center;
+  }
+
+  #home .intro .personal-pic {
+    width: 200px;
+    height: 280px;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  #home .intro {
+    flex-direction: column;
+  }
+
+  #home #name {
+    font-size: 16px;
+  }
+
+  #home p {
+    font-size: 12px;
+  }
+
+  #home .info {
+    text-align: center;
+  }
+
+  #home .intro .personal-pic {
+    width: 180px;
+    height: 260px;
+  }
+}
