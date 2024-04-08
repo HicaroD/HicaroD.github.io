@@ -21,3 +21,12 @@
 #resume .work-stage > p {
   margin: 0;
 }
+
+@media screen and (max-width: 700px) {
+  #resume .education-location,
+  #resume .work-location,
+  #resume .education-stage,
+  #resume .work-stage {
+    flex-direction: column;
+  }
+}
