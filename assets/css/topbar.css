@@ -47,3 +47,27 @@
 .topbar-line {
   margin-bottom: 2rem;
 }
+
+@media screen and (max-width: 900px) {
+  #topbar {
+    flex-direction: column;
+  }
+
+  #topbar .me .name {
+    font-size: 1.6rem;
+  }
+
+  #topbar .items {
+    font-size: 16px;
+  }
+
+  #topbar .me,
+  #topbar .items {
+    justify-content: center;
+    width: 100%;
+  }
+
+  #topbar .items {
+    padding-left: 0px;
+  }
+}
