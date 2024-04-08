@@ -10,7 +10,7 @@
   },
   "posts": [
     {
-      "title": { "name": "My first post", "link": "#" },
+      "title": { "name": "That's a pretty huge name for a blog post", "link": "#" },
       "description": "That's my first post description",
       "file": "_posts/my-first-post.html",
       "tags": ["rust", "web"]

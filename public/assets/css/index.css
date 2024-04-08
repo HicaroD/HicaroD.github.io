@@ -26,3 +26,22 @@
   width: 300px;
   text-align: center;
 }
+
+@media screen and (max-width: 900px) {
+  #home #name {
+    font-size: 25px;
+  }
+
+  #home p {
+    font-size: 17px;
+  }
+
+  #home .info {
+    text-align: center;
+  }
+
+  #home .intro .personal-pic {
+    width: 215px;
+    height: 300px;
+  }
+}

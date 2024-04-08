@@ -66,3 +66,25 @@ br {
   color: rgb(152, 143, 129);
   background-color: rgb(45, 49, 51);
 }
+
+@media screen and (max-width: 1110px) {
+  * > p, .list {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  * > p, .list {
+    font-size: 16px;
+  }
+
+  .section-title {
+    font-size: 28px !important;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  * > p, .list {
+    font-size: 15px;
+  }
+}
