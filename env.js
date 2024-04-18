@@ -1,7 +1,7 @@
 const PROD_PUBLIC_DIR = "./public";
 const LOCAL_PUBLIC_DIR = "./_public";
 
-function getEnvironmentSetup() {
+export function getEnvironmentSetup() {
   const environment = process.env.ENVIRON;
   if (environment === undefined) {
     throw new Error(

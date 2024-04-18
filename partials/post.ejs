@@ -1,9 +1,9 @@
 <%- include(metaconfig.paths.layouts.start); %>
 <main id="post">
   <div class="header">
-    <h1 class="title"><%- posts[blogPostIndex].title.name %></h1>
-    <p class="created-at">Hícaro Dânrlley — <%- posts[blogPostIndex].createdAt %></p>
+    <h1 class="title"><%- currentPost.title.name %></h1>
+    <p class="created-at">Hícaro Dânrlley — <%- currentPost.createdAt %></p>
   </div>
-  <%- posts[blogPostIndex].content %>
+  <%- currentPost.content %>
 </main>
 <%- include(metaconfig.paths.layouts.end); %>

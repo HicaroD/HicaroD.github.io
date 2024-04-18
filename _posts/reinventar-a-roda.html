@@ -1,0 +1,123 @@
+<p>
+  A ideia de “reinventar a roda” é geralmente uma prática mal vista dentro do
+  mundo do desenvolvimento de software, isso porque muitos desenvolvedores
+  argumentam que utilizar um framework ou biblioteca para resolver um problema
+  específico é uma boa ideia, pois eles possuem ferramentas que facilitam e
+  agilizam o seu trabalho. Isso é pode ser uma boa ideia, sobretudo se você quer
+  terminar o trabalho e ser produtivo, no entanto, isso nem sempre é verdade.
+</p>
+
+<p>
+  Principalmente no começo da carreira, não existe essa preocupação a respeito
+  do quão perigoso e custoso é adicionar mais uma dependência ao seu projeto. Se
+  analisarmos de forma mais fria e até mesmo incomum, descobrimos que a palavra
+  “dependência” possui diversos significados, e um deles seria “condição de quem
+  é dependente”, ou seja, a partir do momento que uma nova dependência é
+  adicionada ao seu projeto, seu projeto torna-se dependente daquela biblioteca
+  / pacote. Além disso, se formos ainda mais a fundo no significado, não
+  concorda que tal palavra também indica uma “condição de submissão”?
+  Tornamos-nos submissos a uma dependência, pois você precisa dela para fazer
+  algo funcionar da forma esperada. Além do mais, não apenas herdamos o que uma
+  biblioteca oferece, mas também o que ela não oferece. Por exemplo, caso a
+  dependência tenha algum problema de segurança e você tenha construído seu
+  software em torno daquela dependência,
+  <b>seu software agora também possui problemas de segurança.</b> Dessa maneira,
+  adicionar uma nova dependência deveria ser uma ação difícil, deveria dedicar
+  força e coragem, pois você herdará tudo que aquela biblioteca pode e não
+  oferecer, e isso gera consequências. Pode até parecer estranho e até mesmo
+  exagerado, mas eu realmente penso que isso é verdade.
+</p>
+
+<p>
+  Hoje em dia, linguagens, como NodeJS e Python, facilitam bastante a adição de
+  novas dependências ao nosso projeto graças aos gerenciadores de pacotes como
+  <a class="link" href="https://www.npmjs.com/" target="_blank"
+    >NPM (Node Package Manager)</a
+  >
+  e
+  <a class="link" href="https://pip.pypa.io/en/stable/" target="_blank"
+    >Pip (Package Installer for Python)</a
+  >
+  , sendo assim existe esse sentimento de que é simples e não há custo adicionar
+  uma nova dependência, visto que tal ação está a um comando de distância,
+  especialmente para programadores menos experientes. Claro que essas
+  facilidades são vantajosas e podem ser totalmente benéficas, sobretudo quando
+  você é experiente o suficiente para entender que toda facilidade possui um
+  custo, alguém precisou fazer o trabalho sujo para que você mantenha suas mãos
+  limpas, e o responsável pelo trabalho sujo é geralmente seu computador, aquele
+  que irá processar as informações que foram herdadas das dependências
+  inseridas, mesmo que ele, muitas vezes, não precise processar boa parte das
+  informações.
+</p>
+
+<p>
+  Falando especificamente sobre o NPM, tal ferramenta é alvo de memes em razão
+  da forma com que as dependências são gerenciadas. Quando executamos o comando
+  “npm install” junto com o nome de alguma biblioteca / pacote, NPM irá procurar
+  na web, mais especificamente no
+  <a class="link" href="https://www.npmjs.com/" target="_blank">site oficial</a
+  >, irá baixar todo o conteúdo do pacote para dentro de um famoso diretório
+  chamado node_modules, que age como um cache para os pacotes e o NPM é treinado
+  para poder localizar qualquer instrução de “import” dentro desse diretório.
+  Agora chegamos na parte interessante, provavelmente a razão por trás de boa
+  parte dos memes gira em torno do diretório “node_modules”.
+</p>
+
+<div class="image">
+  <img
+  src="assets/blog/reinvent-the-wheel/node_modules.webp"
+  alt="Meme image about node_modules directory"
+  />
+  <p>node_modules são tão problemáticos assim?</p>
+</div>
+
+<p>
+  O problema do node_modules possivelmente não envolve dependências individuais,
+  mas sim as dependências das dependências. Se tivermos o pacote A e B, ambos
+  dependem de outros pacotes C e D, ao invés de usarmos C e D para A e B, nós
+  baixamos C e D duas vezes, isto é, cópias diferentes para cada pacote
+  dependente, e isso com certeza é um problema. Claro que podem ocorrer
+  problemas de compatibilidade onde A depende de versões diferentes de C e D, já
+  B depende de outras versões, no entanto, isso ainda é um problema, pois
+  aumenta a duplicação de código do projeto e a quantidade de instruções que a
+  CPU deve executar.
+</p>
+
+<p>
+  Esse problema pode se escalonar caso você esteja adicionando novas
+  dependências para usufruir apenas de um ou dois métodos do pacote. Claro que
+  você pode argumentar que está adicionando uma nova dependência, mas não está
+  usando tudo dela, então não tem problema, não é? NÃO, o estrago já foi feito,
+  pois o código já está em sua máquina e você já herdou tudo de bom e ruim que
+  essa dependência te oferece, além da quantidade de instruções que serão
+  executadas de forma desnecessária.
+</p>
+
+<p>
+  Afinal, qual a moral da história? <b>Escreva tudo do zero…</b>
+  <i>Estou brincando</i>. Apesar dos argumentos citados darem indícios de que
+  adicionar novas dependências não é uma boa ideia e isso não deve ser feito e
+  você deveria criar tudo do zero, existem diversas situações onde isso não é
+  verdade, há casos onde você deve instalar novas bibliotecas e evitar
+  “reinventar a roda”. Possivelmente existem bibliotecas lapidadas e testadas
+  por muito mais tempo e são mais confiáveis do que simplesmente criar uma do
+  zero, isso dedicaria mais tempo e certamente você estaria muito mais
+  suscetível a bugs, sobretudo no início do projeto. Essas dependências mais
+  estabelecidas também estão suscetíveis a bugs, nenhum software está livre de
+  bugs, todavia, a depender do quão madura a dependência é, ela passou por essa
+  fase inicial de provação graças ao tempo dedicado no seu desenvolvimento,
+  sendo assim, nesses casos, vale a pena adicionar uma nova dependência.
+</p>
+
+<p>
+  Contudo, são casos específicos, e, para toda dependência, reflita antes,
+  analise friamente se você não pode fazer sozinho, especialmente em casos que
+  você quer uma parte bem específica de uma grande dependência, e não gostaria
+  de herdar tudo apenas para usufruir de um ou dois métodos por conforto.
+</p>
+
+<p>
+  Jamais esqueça: para que você tenha mantenha suas mãos limpas, alguém teve que
+  fazer o trabalho sujo, e ele não vem de graça. Uma hora alguém pagará o preço,
+  e pode ser você e seu computador.
+</p>
