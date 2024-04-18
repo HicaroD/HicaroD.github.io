@@ -2,7 +2,8 @@ import fs from "fs";
 import path from "path";
 import ejs from "ejs";
 
-import { getEnvironmentSetup, getConfig, buildPublicDir } from "./config.js";
+import { getConfig, buildPublicDir } from "./config.js";
+import { getEnvironmentSetup } from "./env.js";
 import { isEJSFile } from "./utils.js";
 
 import { PUBLIC_DIR_PATH } from "./env.js";
@@ -22,7 +23,10 @@ function generateHTMLFiles(renderedHTMLFiles) {
 }
 
 function generateBlogPosts(renderedBlogPosts) {
-  for (const [postFilename, blogPost] of Object.entries(renderedBlogPosts)) {
+  for (let [postFilename, blogPost] of Object.entries(renderedBlogPosts)) {
+    if (!postFilename.endsWith(".html")) {
+      postFilename = postFilename + ".html";
+    }
     fs.writeFileSync(`${PUBLIC_DIR_PATH}/${postFilename}`, blogPost);
   }
 }
@@ -70,15 +74,13 @@ function generateBlogPostsContent(renderedHTMLs, config) {
   const blogPostPartial = fs
     .readFileSync(`${PARTIALS_DIR}/post.ejs`)
     .toString();
-  const blogPosts = fs.readdirSync("_posts");
 
-  blogPosts.forEach((blogPostFilename, blogPostIndex) => {
-    const configWithBlogPostIndex = {
-      blogPostIndex,
+  config.posts.forEach((blogPost) => {
+    const renderedHTML = ejs.render(blogPostPartial, {
       ...config,
-    };
-    const renderedHTML = ejs.render(blogPostPartial, configWithBlogPostIndex);
-    renderedHTMLs["blog"][blogPostFilename] = renderedHTML;
+      currentPost: blogPost,
+    });
+    renderedHTMLs["blog"][blogPost.title.file] = renderedHTML;
   });
 }
 

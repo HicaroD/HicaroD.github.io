@@ -13,6 +13,17 @@
   margin: 0px;
 }
 
+#post > p {
+  text-align: justify;
+}
+
+#post .image {
+  display: block;
+  text-align: center;
+  margin: 5% auto;
+  font-style: italic;
+}
+
 /* Generic block (notes, quotes, warning, tips and etctera) */
 #post .block {
   padding-left: 15px;

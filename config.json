@@ -10,16 +10,37 @@
   },
   "posts": [
     {
-      "title": { "name": "That's a pretty huge name for a blog post", "link": "#" },
+      "title": {
+        "name": "That's a pretty huge name for a blog post",
+        "link": "#",
+        "file": "_posts/my-first-post.html"
+      },
       "description": "That's my first post description",
       "file": "_posts/my-first-post.html",
+      "prod": false,
       "tags": ["rust", "web"]
     },
     {
-      "title": { "name": "My second blog post", "link": "#" },
+      "title": {
+        "name": "My second blog post",
+        "link": "#",
+        "file": "_posts/my-second-post.html"
+      },
       "description": "That's my second post description",
       "file": "_posts/my-second-post.html",
+      "prod": false,
       "tags": ["cpp"]
+    },
+    {
+      "title": {
+        "name": "Reinventar a roda é necessário (às vezes)",
+        "link": "#",
+        "file": "_posts/reinventar-a-roda.html"
+      },
+      "description": "Reinventar a roda pode ser uma boa ideia muitas vezes e eu explicarei o porquê",
+      "file": "_posts/reinventar-a-roda.html",
+      "prod": true,
+      "tags": ["software", "opinion", "rant"]
     }
   ],
   "visibility": [
@@ -36,7 +57,7 @@
     {
       "item": "Blog",
       "path": "blog.html",
-      "prod": false
+      "prod": true
     }
   ]
 }

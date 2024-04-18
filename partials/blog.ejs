@@ -2,9 +2,9 @@
 <main id="blog">
   <% posts.forEach(function(post){ -%>
   <div class="post">
-    <h1 class="title">
+    <h2 class="title">
       <a class="link" href="<%= post.title.link %>"><%= post.title.name %></a>
-    </h1>
+    </h2>
     <p><%= post.description %></p>
     <p class="date"><%= post.createdAt %></p>
     <div class="tags">

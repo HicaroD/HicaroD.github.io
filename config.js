@@ -1,23 +1,10 @@
 import fs from "fs";
 import path from "path";
 import { getDayMonthYear, getFormattedPath } from "./utils.js";
+import { ENVIRONMENT, PUBLIC_DIR_PATH } from "./env.js";
 
 const CONFIG_FILE = "./config.json";
 const ASSETS_DIR = "./assets";
-import { PUBLIC_DIR_PATH } from "./env.js";
-
-export function getEnvironmentSetup() {
-  const environment = process.env.ENVIRON;
-  if (environment === undefined) {
-    throw new Error(
-      "Consider setting an environment variable, such as 'ENVIRON=prod' or 'ENVIRON=debug'",
-    );
-  }
-  if (environment !== "prod" && environment !== "debug") {
-    throw new Error(`Invalid value for ENVIRON variable: '${environment}'`);
-  }
-  return environment;
-}
 
 export function getConfig(environment) {
   const userConfig = getUserConfig();
@@ -43,12 +30,19 @@ function getUserConfig() {
   const userConfig = fs.readFileSync(CONFIG_FILE).toString();
 
   const userConfigJson = JSON.parse(userConfig);
-  userConfigJson.posts = userConfigJson.posts.map((post) => getPostInfo(post));
+  userConfigJson.posts = userConfigJson.posts
+    .filter((post) => {
+      if (ENVIRONMENT === "prod") {
+        return post.prod;
+      }
+      return true;
+    })
+    .map((post, index) => getPostInfo(index, post));
 
   return userConfigJson;
 }
 
-function getPostInfo(post) {
+function getPostInfo(index, post) {
   const postContent = fs.readFileSync(post.file).toString();
   const { birthtime, mtime } = fs.lstatSync(post.file);
 
@@ -56,6 +50,7 @@ function getPostInfo(post) {
 
   return {
     ...post,
+    blogPostIndex: index,
     content: postContent,
     createdAt: getDayMonthYear(birthtime),
     updatedAt: getDayMonthYear(mtime),

@@ -25,7 +25,7 @@ export function getFormattedPath(unformattedPath, environment) {
     formattedPath = formattedPath.replace("/" + PUBLIC_DIR_PATH, "");
   }
   if (formattedPath.startsWith("/" + "_posts")) {
-    formattedPath = formattedPath.replace("/_posts", "/blog");
+    formattedPath = formattedPath.replace("/_posts", "");
   }
   if (formattedPath.endsWith(".html") && environment === "prod") {
     formattedPath = formattedPath.replace(".html", "");
